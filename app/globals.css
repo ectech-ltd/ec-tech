@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+body {
+  background: radial-gradient(50% 50% at 50% 50%, #FFFCD7 0%, #F2FFF5 100%);;
+}
