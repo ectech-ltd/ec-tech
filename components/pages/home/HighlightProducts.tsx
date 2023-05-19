@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Slider, { Settings } from 'react-slick'
 import cls from 'classnames'
 import { PlusCircledIcon } from '@radix-ui/react-icons'
+import LogoLabel from '@/components/LogoLabel'
 
 const settings: Settings = {
   dots: true,
@@ -42,13 +43,11 @@ const services = [
 
 export default function HighlightProducts() {
   return (
-    <div className="relative max-w-[86rem] mx-auto space-y-4">
-      <div className="relative">
-        <div className="text-2xl font-semibold text-[#006838] border-l-4 border-[#006838] px-4 py-2">
-          Sản phẩm nổi bật
-        </div>
-      </div>
-
+    <div
+      id="products"
+      className="relative max-w-[86rem] mx-auto space-y-4 overflow-hidden"
+    >
+      <LogoLabel label="Sản phẩm nổi bật" />
       <div className="relative z-0 w-full flex items-center justify-start gap-3 overflow-scroll flex-nowrap">
         {services.map((item, idx) => (
           <div className="relative min-w-[360px] max-w-[360px]" key={idx}>

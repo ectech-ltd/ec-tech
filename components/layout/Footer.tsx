@@ -3,16 +3,22 @@ import Image from 'next/image'
 export default function Footer() {
   return (
     <footer
-      className="absolute w-full py-12"
+      className="absolute w-full py-8 md:py-12"
       style={{
         background:
           'radial-gradient(474.26% 474.26% at 50% 50%, #E9FFF5 0%, rgba(43, 62, 17, 0) 100%)',
       }}
     >
-      <div className="max-w-[86rem] mx-auto">
-        <Image src="/img/logo-text.svg" width={280} height={100} alt="logo" />
-        <div className="flex justify-between items-start -mx-4 text-gray-900 text-sm mt-10">
-          <div className="px-6 w-1/4 space-y-2">
+      <div className="max-w-[86rem] mx-auto px-6 md:px-0">
+        <Image
+          src="/img/logo-text.svg"
+          width={150}
+          height={56}
+          alt="logo"
+          className="h-16 md:h-20"
+        />
+        <div className="flex flex-wrap justify-between items-start -mx-4 text-gray-900 text-sm mt-2 md:mt-10 space-y-6 md:space-y-0">
+          <div className="px-6 w-full md:w-1/4 space-y-3">
             <p className="font-bold text-lg">Thông tin:</p>
             <h2 className="font-bold">Công ty TNHH EC-TECH</h2>
             <p className="font-bold">
@@ -39,10 +45,10 @@ export default function Footer() {
               </span>
             </p>
           </div>
-          <div className="px-6 w-1/4 space-y-2">
-            <p className="font-bold text-lg">Thông tin:</p>
+          <div className="px-6 w-full md:w-1/4 space-y-3">
+            <p className="font-bold text-lg">Tổng đài tư vấn:</p>
             <p>000000000000000</p>
-            <p className="font-bold text-lg !mt-10">Email hỗ trợ khách hàng:</p>
+            <p className="font-bold text-lg">Email hỗ trợ khách hàng:</p>
             <a href="mailto:support@gmail.com">support@gmail.com</a>
             <div className="flex items-center justify-center -mx-2">
               <div className="px-2 w-1/2">
@@ -58,7 +64,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="px-6 w-1/4 space-y-2">
+          <div className="px-6 w-full md:w-1/4 space-y-3">
             <p className="font-bold text-lg">Chính sách:</p>
             <ul>
               <li>Chính sách bảo hành</li>
@@ -67,7 +73,7 @@ export default function Footer() {
               <li>Chính sách bảo mật thông tin</li>
             </ul>
           </div>
-          <div className="px-6 w-1/4 space-y-2">
+          <div className="px-6 w-full md:w-1/4 space-y-3">
             <p className="font-bold text-lg">Fanpage:</p>
             <a href="https://www.facebook.com/dienmatroiectech">
               Điện Mặt Trời Ec-Tech

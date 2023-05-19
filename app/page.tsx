@@ -8,7 +8,7 @@ import OurServices from '@/components/pages/home/OurServices'
 
 export default function Home() {
   return (
-    <main className="min-h-screen space-y-14">
+    <main className="min-h-screen space-y-8 md:space-y-14 px-6 md:px-0">
       <HomePageSlider />
       <AboutUs />
       <OurServices />

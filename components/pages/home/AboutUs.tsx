@@ -3,14 +3,17 @@ import Image from 'next/image'
 
 export default function AboutUs() {
   return (
-    <div className="relative max-w-[86rem] mx-auto flex items-center justify-between">
-      <div className="flex items-center justify-center w-full h-full -mx-4">
-        <div className="w-3/5 px-4">
+    <div
+      id="about-us"
+      className="relative max-w-[86rem] mx-auto flex items-center justify-between"
+    >
+      <div className="flex flex-wrap items-center justify-center w-full -mx-4">
+        <div className="hidden md:block w-3/5 px-4">
           <Image src="/img/image 3.png" width={995} height={599} alt="logo" />
         </div>
-        <div className="w-2/5 px-4 space-y-4">
+        <div className="w-full md:w-2/5 px-4 space-y-4">
           <LogoLabel label="Về chúng tôi" />
-          <h2 className="text-black text-4xl font-extrabold">
+          <h2 className="text-black text-2xl md:text-4xl font-extrabold text-center md:text-left">
             “ We are the Best-In-Class Products & Solutions ”
           </h2>
           <p className="text-sm font-semibold">
