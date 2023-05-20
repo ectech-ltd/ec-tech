@@ -10,7 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        'green-dark': '#006838',
+      },
       keyframes: {
         enterFromRight: {
           from: { opacity: 0, transform: 'translateX(200px)' },
@@ -45,16 +47,16 @@ module.exports = {
           to: { opacity: 0 },
         },
       },
-    },
-    animation: {
-      scaleIn: 'scaleIn 200ms ease',
-      scaleOut: 'scaleOut 200ms ease',
-      fadeIn: 'fadeIn 200ms ease',
-      fadeOut: 'fadeOut 200ms ease',
-      enterFromLeft: 'enterFromLeft 250ms ease',
-      enterFromRight: 'enterFromRight 250ms ease',
-      exitToLeft: 'exitToLeft 250ms ease',
-      exitToRight: 'exitToRight 250ms ease',
+      animation: {
+        scaleIn: 'scaleIn 200ms ease',
+        scaleOut: 'scaleOut 200ms ease',
+        fadeIn: 'fadeIn 200ms ease',
+        fadeOut: 'fadeOut 200ms ease',
+        enterFromLeft: 'enterFromLeft 250ms ease',
+        enterFromRight: 'enterFromRight 250ms ease',
+        exitToLeft: 'exitToLeft 250ms ease',
+        exitToRight: 'exitToRight 250ms ease',
+      },
     },
   },
   plugins: [

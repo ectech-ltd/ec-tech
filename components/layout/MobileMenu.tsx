@@ -9,11 +9,11 @@ export default function MobileMenu() {
     <NavigationMenu.Root className="relative z-10 justify-end w-screen block md:hidden">
       <NavigationMenu.List className="m-0 p-1 justify-end">
         <NavigationMenu.Item className="flex items-center justify-end">
-          <NavigationMenu.Trigger className="group flex select-none items-center justify-between gap-1 rounded-2 px-3 py-2 font-medium leading-none outline-none">
+          <NavigationMenu.Trigger className="group flex select-none px-3 py-2 outline-none">
             <HamburgerMenuIcon className="relative h-6 w-6" aria-hidden />
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full] sm:w-auto">
-            <div className="divide-y">
+          <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto">
+            <div className="divide-y w-full">
               <Link
                 href="/#about-us"
                 className="hover:text-[#247B38] px-4 py-2 block"
@@ -27,7 +27,7 @@ export default function MobileMenu() {
                 Dịch vụ
               </Link>
               <Link
-                href="/#produccts"
+                href="/products"
                 className="hover:text-[#247B38] px-4 py-2 block"
               >
                 Sản phẩm

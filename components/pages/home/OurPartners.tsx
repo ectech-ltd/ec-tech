@@ -1,5 +1,6 @@
 import LogoLabel from '@/components/LogoLabel'
 import Image from 'next/image'
+import Marquee from 'react-fast-marquee'
 
 const services = [
   {
@@ -38,19 +39,23 @@ export default function OurPartners() {
         <LogoLabel label="Thương hiệu của chúng tôi" />
       </div>
       <div className="-mx-6 md:mx-0">
-        <div className="relative z-0 w-full flex flex-wrap justify-center space-x-8 items-center overflow-scroll bg-white">
+        <Marquee
+          className="flex justify-center items-center overflow-hidden bg-white py-2"
+          pauseOnHover
+          direction="right"
+        >
           {services.map((item, idx) => (
-            <div className="relative w-1/2 md:w-28" key={idx}>
+            <div className="relative mx-4 md:mx-10 w-28" key={idx}>
               <Image
                 src={item.img}
                 width={160}
                 height={56}
                 alt="logo"
-                className="max-h-14 md:max-h-24 object-contain"
+                className="max-h-20 md:max-h-28 object-contain"
               />
             </div>
           ))}
-        </div>
+        </Marquee>
       </div>
     </div>
   )

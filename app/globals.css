@@ -8,3 +8,15 @@
 body {
   background: radial-gradient(50% 50% at 50% 50%, #FFFCD7 0%, #F2FFF5 100%);;
 }
+
+
+.notion-page {
+  max-width: 86rem !important;
+}
+.notion-page-header {
+  display: none !important;
+}
+
+.notion-title{
+  display: none !important;
+}

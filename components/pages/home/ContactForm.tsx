@@ -120,7 +120,7 @@ export default function ContactForm() {
                 </div>
                 <Form.Control asChild>
                   <input
-                    className="box-border w-full flex py-2 md:py-3 px-6 border border-gray-900 appearance-none items-center justify-center rounded-lg text-sm leading-none"
+                    className="box-border w-full flex py-2 md:py-3 px-6 border border-gray-400 appearance-none items-center justify-center rounded-lg text-sm leading-none"
                     type="text"
                     required
                     onChange={(e) => setName(e.target.value)}
@@ -135,7 +135,7 @@ export default function ContactForm() {
                 </div>
                 <Form.Control asChild>
                   <input
-                    className="box-border w-full flex py-2 md:py-3 px-6 border border-gray-900 appearance-none items-center justify-center rounded-lg text-sm leading-none"
+                    className="box-border w-full flex py-2 md:py-3 px-6 border border-gray-400 appearance-none items-center justify-center rounded-lg text-sm leading-none"
                     type="email"
                     required
                     onChange={(e) => setEmail(e.target.value)}
@@ -150,7 +150,7 @@ export default function ContactForm() {
                 </div>
                 <Form.Control asChild>
                   <input
-                    className="box-border w-full flex py-2 md:py-3 px-6 border border-gray-900 appearance-none items-center justify-center rounded-lg text-sm leading-none"
+                    className="box-border w-full flex py-2 md:py-3 px-6 border border-gray-400 appearance-none items-center justify-center rounded-lg text-sm leading-none"
                     type="text"
                     required
                     onChange={(e) => setPhone(e.target.value)}

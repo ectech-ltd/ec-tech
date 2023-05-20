@@ -74,7 +74,7 @@ export default function OurServices() {
           <p className="text-sm md:text-lg">
             {services[currentIdx].description}
           </p>
-          <button className="bg-white text-[#006838] font-semibold flex items-center justify-center text-sm md:text-xl px-6 md:px-12 py-1 md:py-3 rounded-lg hover:bg-slate-100">
+          <button className="bg-white text-green-dark font-semibold flex items-center justify-center text-sm md:text-xl px-6 md:px-12 py-1 md:py-3 rounded-lg hover:bg-slate-100">
             {services[currentIdx].CTA}
           </button>
         </div>
