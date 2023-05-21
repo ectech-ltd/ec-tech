@@ -14,12 +14,12 @@ export default async function Page({
   const resp = await NotionClient.getProduct(productID!)
 
   return (
-    <main className="min-h-screen max-w-[86rem] mx-auto py-6 md:px-0">
-      <div className="flex items-start justify-between">
+    <main className="min-h-screen max-w-[86rem] mx-auto py-6 px-6 md:px-0">
+      <div className="flex items-start flex-wrap justify-between">
         <div className="w-full md:w-1/3">
           <ImageGallery data={resp.data.properties.Photos.files} />
         </div>
-        <div className="w-full md:w-2/3">
+        <div className="w-full md:w-2/3 mt-6 md:mt-0">
           <ProductDetailHeader data={resp.data} />
         </div>
       </div>

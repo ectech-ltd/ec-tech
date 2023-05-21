@@ -24,10 +24,11 @@ export default function ImageGallery({ data }: { data: IFile[] }) {
       <Slider
         {...settings}
         ref={ref}
-        dotsClass="absolute -bottom-20 right-0 w-full z-20 px-6 md:px-12"
+        beforeChange={(_, next) => setCurrentIdx(next)}
+        dotsClass="absolute bottom-0 md:-bottom-20 right-0 w-full z-20 px-6 md:px-12"
         appendDots={(dots) => (
           <div className="w-full">
-            <ul className="flex items-center justify-between gap-2 md:gap-4 w-full z-20">
+            <ul className="flex items-center justify-center md:justify-between gap-2 md:gap-4 w-full z-20">
               {(dots as []).map((dot: any, idx: number) => (
                 <li
                   onClick={() => {
@@ -36,16 +37,17 @@ export default function ImageGallery({ data }: { data: IFile[] }) {
                   }}
                   key={idx}
                   className={classNames(
-                    'border md:border-2 rounded-lg md:rounded-xl overflow-hidden bg-white',
+                    'border md:border-2 md:rounded-xl overflow-hidden md:bg-white', // desktop
+                    'h-2 md:h-auto w-2 md:w-auto rounded-full -mt-6 md:-mt-10', // mobile
                     {
-                      'border-green-dark': idx === currentIdx,
-                      'border-gray-400': idx !== currentIdx,
+                      'border-green-dark bg-green-dark': idx === currentIdx,
+                      'border-gray-400 bg-[#75867E]': idx !== currentIdx,
                     },
                   )}
                 >
                   <img
                     src={data[idx].file.url}
-                    className="w-16 h-16 object-contain"
+                    className="hidden md:block w-16 h-16 object-contain"
                     alt=""
                   />
                 </li>

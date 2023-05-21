@@ -54,7 +54,7 @@ const NotionClient = {
       filter = {
         property: 'Title',
         title: {
-          contains: tag,
+          contains: search,
         },
       }
     }

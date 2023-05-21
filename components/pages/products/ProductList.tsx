@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { memo, useEffect, useState } from 'react'
 import slugify from 'slugify'
+import { useProductsContext } from './context'
 
 const ProductLoading = () => {
   return (
@@ -30,35 +31,8 @@ const ProductLoading = () => {
   )
 }
 
-export default memo(function ProductList({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined }
-}) {
-  const category = searchParams.category as string
-  const tag = searchParams.tag as string
-  const [loading, setLoading] = useState<boolean>(false)
-  const [hasMore, setHasMore] = useState<boolean>(false)
-  const [data, setData] = useState<IProduct[]>([])
-  const [prePage, setPrePage] = useState<string | undefined>(undefined)
-  const [page, setPage] = useState<string | undefined>(undefined)
-
-  useEffect(() => {
-    setLoading(true)
-    axios
-      .get('/api/products', {
-        params: { page_size: 9, start_cursor: prePage, category, tag },
-      })
-      .then(({ data: resp }: any) => {
-        setData((prev) => [...prev, ...resp.results])
-        setHasMore(resp.has_more)
-        setPage(resp.next_cursor)
-      })
-      .catch(console.error)
-      .finally(() => {
-        setLoading(false)
-      })
-  }, [prePage, category, tag])
+export default memo(function ProductList() {
+  const { data, hasMore, loading, loadMore } = useProductsContext()
 
   return (
     <div className="space-y-6">
@@ -103,7 +77,7 @@ export default memo(function ProductList({
           <button
             type="button"
             className="py-2 px-6 text-white bg-green-dark hover:opacity-80 rounded-lg"
-            onClick={() => setPrePage(page)}
+            onClick={loadMore}
           >
             Load More
           </button>

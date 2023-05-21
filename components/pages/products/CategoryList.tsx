@@ -1,15 +1,20 @@
 import NotionClient from '@/lib/notion'
+import { ICategory } from '@/lib/notion/categories'
 import classNames from 'classnames'
 import Link from 'next/link'
 
-export default async function CategoryList({ active }: { active: string }) {
-  const resp = await NotionClient.getCategories()
-
+export default function CategoryList({
+  data: categories,
+  active,
+}: {
+  data: ICategory[]
+  active: string
+}) {
   return (
     <div className="space-y-2">
       <h3 className="text-xl font-semibold">Sản phẩm</h3>
       <div className="divide-y">
-        {resp.results.map((item) => (
+        {categories.map((item) => (
           <Link
             href={`/products?category=${item.id}`}
             className={classNames(

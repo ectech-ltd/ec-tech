@@ -9,9 +9,11 @@ body {
   background: radial-gradient(50% 50% at 50% 50%, #FFFCD7 0%, #F2FFF5 100%);;
 }
 
-
+/* notion custom style */
 .notion-page {
   max-width: 86rem !important;
+  margin-top: 32px !important;
+  padding: 0 !important;
 }
 .notion-page-header {
   display: none !important;
