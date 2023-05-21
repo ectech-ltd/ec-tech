@@ -1,4 +1,5 @@
 import CategoryList from '@/components/pages/products/CategoryList'
+import HighlightedProducts from '@/components/pages/products/HighlightedProducts'
 import MobileFilter from '@/components/pages/products/MobileFilter'
 import ProductList from '@/components/pages/products/ProductList'
 import { ProductSearchBox } from '@/components/pages/products/ProductSearchBox'
@@ -11,9 +12,10 @@ export default async function Page({
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
-  const [tagResp, catResp] = await Promise.all([
+  const [tagResp, catResp, productRsp] = await Promise.all([
     NotionClient.getTags(),
     NotionClient.getCategories(),
+    NotionClient.getHightedProducts(),
   ])
   return (
     <main className="min-h-screen max-w-[86rem] mx-auto py-6 md:px-0 flex items-start justify-between flex-wrap">
@@ -24,6 +26,7 @@ export default async function Page({
             data={catResp.results}
             active={searchParams['category'] as string}
           />
+          <HighlightedProducts data={productRsp.results} />
           <TagsList
             data={tagResp.results}
             active={searchParams['tag'] as string}
