@@ -47,7 +47,7 @@ export default function Footer() {
           </div>
           <div className="px-6 w-full md:w-1/4 space-y-3">
             <p className="font-bold text-lg">Tổng đài tư vấn:</p>
-            <p>000000000000000</p>
+            <p>0936241501</p>
             <p className="font-bold text-lg">Email hỗ trợ khách hàng:</p>
             <a href="mailto:support@gmail.com">support@gmail.com</a>
             <div className="flex items-center justify-center -mx-2">
@@ -75,13 +75,35 @@ export default function Footer() {
           </div>
           <div className="px-6 w-full md:w-1/4 space-y-3">
             <p className="font-bold text-lg">Fanpage:</p>
-            <a href="https://www.facebook.com/dienmatroiectech">
-              Điện Mặt Trời Ec-Tech
-            </a>
+            <div
+              className="fb-page"
+              data-href="https://www.facebook.com/dienmatroiectech"
+              data-tabs="timeline"
+              data-width=""
+              data-height="240"
+              data-small-header="false"
+              data-adapt-container-width="true"
+              data-hide-cover="false"
+              data-show-facepile="true"
+            >
+              <blockquote
+                cite="https://www.facebook.com/dienmatroiectech"
+                className="fb-xfbml-parse-ignore"
+              >
+                <a href="https://www.facebook.com/dienmatroiectech">
+                  Điện Mặt Trời Ec-Tech
+                </a>
+              </blockquote>
+            </div>
             <p className="font-bold text-lg">Địa điểm:</p>
-            <a href="https://www.facebook.com/dienmatroiectech">
-              Điện Mặt Trời Ec-Tech
-            </a>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15676.12305399268!2d106.7128678!3d10.8089557!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xac6ca2a1ad3f4133%3A0xf3f057ec254598e5!2zxJBp4buHbiBt4bq3dCB0cuG7nWkgRWMtVGVjaA!5e0!3m2!1svi!2s!4v1684730473358!5m2!1svi!2s"
+              data-width="340"
+              data-height="300"
+              className="border-none"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </div>
