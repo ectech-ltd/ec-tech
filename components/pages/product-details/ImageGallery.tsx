@@ -46,7 +46,7 @@ export default function ImageGallery({ data }: { data: IFile[] }) {
                   )}
                 >
                   <img
-                    src={data[idx].file.url}
+                    src={data[idx]?.file.url}
                     className="hidden md:block w-16 h-16 object-contain"
                     alt=""
                   />

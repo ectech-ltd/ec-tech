@@ -28,9 +28,15 @@ const SelectItem = React.forwardRef(function SelectItem(
   )
 })
 
-export default function Select() {
+export default function Select({
+  onChange,
+  value,
+}: {
+  onChange: (value: string) => void
+  value: string
+}) {
   return (
-    <RSelect.Root>
+    <RSelect.Root value={value} onValueChange={onChange}>
       <RSelect.Trigger
         className="inline-flex items-center justify-between border border-gray-900 rounded-lg px-4 text-sm leading-none h-10 gap-2 bg-white outline-none min-w-[256px]"
         aria-label="City"

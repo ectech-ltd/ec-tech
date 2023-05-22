@@ -69,13 +69,13 @@ export default function OurServices() {
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-black to-transparent w-full" />
         <div className="absolute inset-0 z-20 px-6 py-4 md:p-12 max-w-2xl text-white space-y-2 md:space-y-6">
           <h2 className="text-lg md:text-5xl font-bold md:font-extrabold uppercase leading-none md:leading-tight">
-            {services[currentIdx].title}
+            {services[currentIdx]?.title}
           </h2>
           <p className="text-sm md:text-lg">
-            {services[currentIdx].description}
+            {services[currentIdx]?.description}
           </p>
           <button className="bg-white text-green-dark font-semibold flex items-center justify-center text-sm md:text-xl px-6 md:px-12 py-1 md:py-3 rounded-lg hover:bg-slate-100">
-            {services[currentIdx].CTA}
+            {services[currentIdx]?.CTA}
           </button>
         </div>
         <Slider
@@ -101,7 +101,7 @@ export default function OurServices() {
                     )}
                   >
                     <Image
-                      src={services[idx].img}
+                      src={services[idx]?.img}
                       width={300}
                       height={190}
                       alt=""

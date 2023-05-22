@@ -6,12 +6,15 @@ import * as RSlider from '@radix-ui/react-slider'
 import * as Form from '@radix-ui/react-form'
 import { useState } from 'react'
 import { formatCurrency } from '@/lib/utils/string'
+import axios from 'axios'
 
 const Slider = ({
+  value,
   max,
   step,
   onChange,
 }: {
+  value: number
   max: number
   step: number
   onChange?: (num: number[]) => void
@@ -20,6 +23,7 @@ const Slider = ({
     className="relative flex items-center select-none touch-none w-full h-5"
     max={max}
     step={step}
+    value={[value]}
     onValueChange={onChange}
     aria-label="Volume"
   >
@@ -38,12 +42,63 @@ export default function ContactForm() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  async function submitForm(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    try {
+      setLoading(true)
+      console.log(`>>>`, {
+        location,
+        area,
+        bill,
+        powerUsage,
+        name,
+        phone,
+        email,
+      })
+      if (
+        !location ||
+        !area ||
+        !bill ||
+        !powerUsage ||
+        !name ||
+        !phone ||
+        !email
+      ) {
+        return
+      }
+
+      await axios.post('/api/contacts', {
+        location,
+        bill: formatCurrency(bill, 'VND'),
+        area: `${area} m2`,
+        powerUsage: `${powerUsage}%`,
+        name,
+        phone,
+        email,
+      })
+      setArea(0)
+      setBill(0)
+      setPowerUsage(0)
+      setName('')
+      setPhone('')
+      setEmail('')
+      setLocation('')
+    } catch (err) {
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div id="contact-us" className="relative max-w-[86rem] mx-auto space-y-4">
       <LogoLabel label="Liên hệ" />
       <div className="relative z-0 w-full px-0 md:px-12">
-        <form className="bg-[#F3F3F3] p-6 md:p-12 rounded-lg flex items-start justify-center flex-wrap space-y-4 md:space-y-0">
+        <form
+          className="bg-[#F3F3F3] p-6 md:p-12 rounded-lg flex items-start justify-center flex-wrap space-y-4 md:space-y-0"
+          onSubmit={submitForm}
+        >
           <div className="w-full md:w-1/2 p-0 md:pr-12">
             <h2 className="font-semibold md:font-bold text-lg md:text-2xl">
               Dự toán chi phí lắp đặt hệ thống
@@ -57,7 +112,7 @@ export default function ContactForm() {
                 <label className="block text-sm md:text-base mb-2 font-semibold">
                   Khu vực
                 </label>
-                <Select />
+                <Select value={location} onChange={setLocation} />
               </div>
               <div className="relative">
                 <label className="block text-sm md:text-base mb-4 font-semibold">
@@ -69,7 +124,12 @@ export default function ContactForm() {
                 <span className="absolute right-0 top-6 text-xs font-semibold">
                   100m2
                 </span>
-                <Slider max={100} step={1} onChange={([num]) => setArea(num)} />
+                <Slider
+                  value={area}
+                  max={100}
+                  step={1}
+                  onChange={([num]) => setArea(num)}
+                />
               </div>
               <div className="relative">
                 <label className="block text-sm md:text-base mb-4 font-semibold">
@@ -79,6 +139,7 @@ export default function ContactForm() {
                   Trung bình tháng
                 </span>
                 <Slider
+                  value={bill}
                   max={100000000}
                   step={1000}
                   onChange={([num]) => setBill(num)}
@@ -97,6 +158,7 @@ export default function ContactForm() {
                 <Slider
                   max={100}
                   step={1}
+                  value={powerUsage}
                   onChange={([num]) => setPowerUsage(num)}
                 />
               </div>
@@ -111,58 +173,68 @@ export default function ContactForm() {
               khách hàng đang quan tâm
             </p>
 
-            <Form.Root className="w-full">
-              <Form.Field className="grid mb-2 md:mb-3" name="name">
+            <div className="w-full">
+              <div className="grid mb-2 md:mb-3">
                 <div className="flex items-baseline justify-between">
-                  <Form.Label className="text-sm md:text-base font-semibold leading-8">
+                  <label className="text-sm font-semibold leading-8">
                     Họ tên
-                  </Form.Label>
+                  </label>
                 </div>
-                <Form.Control asChild>
+                <div className="block">
                   <input
+                    name="name"
                     className="box-border w-full flex py-2 md:py-3 px-6 border border-gray-400 appearance-none items-center justify-center rounded-lg text-sm leading-none"
                     type="text"
                     required
+                    value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
-                </Form.Control>
-              </Form.Field>
-              <Form.Field className="grid mb-2 md:mb-3" name="email">
-                <div className="flex items-baseline justify-between">
-                  <Form.Label className="text-sm md:text-base font-semibold leading-8">
-                    Email
-                  </Form.Label>
                 </div>
-                <Form.Control asChild>
+              </div>
+              <div className="grid mb-2 md:mb-3">
+                <div className="flex items-baseline justify-between">
+                  <label className="text-sm font-semibold leading-8">
+                    Email
+                  </label>
+                </div>
+                <div className="block">
                   <input
                     className="box-border w-full flex py-2 md:py-3 px-6 border border-gray-400 appearance-none items-center justify-center rounded-lg text-sm leading-none"
                     type="email"
+                    value={email}
+                    name="email"
                     required
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                </Form.Control>
-              </Form.Field>
-              <Form.Field className="grid mb-2 md:mb-3" name="phone">
-                <div className="flex items-baseline justify-between">
-                  <Form.Label className="text-sm md:text-base font-semibold leading-8">
-                    Số điện thoại
-                  </Form.Label>
                 </div>
-                <Form.Control asChild>
+              </div>
+              <div className="grid mb-2 md:mb-3">
+                <div className="flex items-baseline justify-between">
+                  <label className="text-sm font-semibold leading-8">
+                    Số điện thoại
+                  </label>
+                </div>
+                <div className="block">
                   <input
+                    value={phone}
                     className="box-border w-full flex py-2 md:py-3 px-6 border border-gray-400 appearance-none items-center justify-center rounded-lg text-sm leading-none"
                     type="text"
+                    name="phone"
                     required
                     onChange={(e) => setPhone(e.target.value)}
                   />
-                </Form.Control>
-              </Form.Field>
-              <Form.Submit asChild>
-                <button className="box-border bg-[#0571FA] hover:bg-opacity-80 px-6 md:px-8 py-2 md:py-3 rounded-lg text-white text-sm font-semibold">
-                  Liên hệ
+                </div>
+              </div>
+              <div className="block">
+                <button
+                  type="submit"
+                  className="box-border bg-[#0571FA] hover:bg-opacity-80 px-6 md:px-8 py-2 md:py-3 rounded-lg text-white text-sm font-semibold"
+                  disabled={loading}
+                >
+                  {loading ? 'Đang gửi...' : 'Liên hệ'}
                 </button>
-              </Form.Submit>
-            </Form.Root>
+              </div>
+            </div>
           </div>
         </form>
       </div>

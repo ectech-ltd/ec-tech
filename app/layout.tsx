@@ -5,9 +5,40 @@ import Navbar from '@/components/layout/Navbar'
 
 const font = Montserrat({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'EC-TECH',
-  description: 'EC-TECH',
+import { Metadata } from 'next'
+
+const seoTitle = 'EC-Tech'
+const seoDescription =
+  'Công ty TNHH Ec-Tech là một công ty khởi nghiệp về thi công lắp đặt điện tái tạo, tập trung vào việc giảm thiểu lượng khí thải carbon và góp phần bảo vệ môi trường thông qua sử dụng năng lượng xanh.'
+
+export const metadata: Metadata = {
+  title: seoTitle,
+  description: seoDescription,
+  category: 'Energy, Solar, Wind, Green',
+  keywords: ['Energy, Solar, Wind, Green, Battery, Inverter, Solar Panel'],
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  openGraph: {
+    title: seoTitle,
+    description: seoDescription,
+    type: 'website',
+    url: 'https://ec-tech.vn/',
+    siteName: 'ec-tech.vn',
+    images: [
+      {
+        url: 'https://ec-tech.vn/img/solar-panel.png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: seoTitle,
+    description: seoDescription,
+    images: ['https://ec-tech.vn/img/solar-panel.png'],
+  },
 }
 
 export default function RootLayout({

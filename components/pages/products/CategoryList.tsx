@@ -25,7 +25,7 @@ export default function CategoryList({
             )}
             key={item.id}
           >
-            {item.properties.Name.title[0].plain_text}
+            {item.properties.Name.title[0]?.plain_text}
           </Link>
         ))}
       </div>

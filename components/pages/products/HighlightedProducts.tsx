@@ -15,7 +15,9 @@ export default function HighlightedProducts({ data }: { data: IProduct[] }) {
           <Link
             href={
               '/products/' +
-              slugify(`${item.properties.Title.title[0].plain_text}.${item.id}`)
+              slugify(
+                `${item.properties.Title.title[0]?.plain_text}.${item.id}`,
+              )
             }
             className={classNames(
               'flex items-center justify-between p-2 hover:bg-green-100 font-semibold hover:text-green-dark',
@@ -23,12 +25,12 @@ export default function HighlightedProducts({ data }: { data: IProduct[] }) {
             key={item.id}
           >
             <img
-              src={item.properties.Photos.files[0].file.url}
+              src={item.properties.Photos.files[0]?.file.url}
               className="w-16 h-16"
               alt=""
             />
             <div className="flex-1 px-2">
-              <p>{item.properties.Title.title[0].plain_text}</p>
+              <p>{item.properties.Title.title[0]?.plain_text}</p>
               <p>{item.properties.Rate.select.name}</p>
             </div>
           </Link>

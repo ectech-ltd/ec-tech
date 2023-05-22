@@ -33,7 +33,7 @@ const MobileFilter = ({
                 onClick={() => router.push(`/products?category=${item.id}`)}
                 className="group text-sm leading-none rounded flex items-center h-6 px-2 relative select-none outline-none data-[state=open]:bg-green-100 data-[state=open]:text-green-dark data-[highlighted]:text-green-dark data-[highlighted]:data-[state=open]:text-green-dark capitalize"
               >
-                {item.properties.Name.title[0].plain_text}
+                {item.properties.Name.title[0]?.plain_text}
               </Menubar.Item>
             ))}
           </Menubar.Content>
@@ -57,7 +57,7 @@ const MobileFilter = ({
                 onClick={() => router.push(`/products?tag=${item.id}`)}
                 className="group text-sm leading-none rounded flex items-center h-6 px-2 relative select-none outline-none data-[state=open]:bg-green-100 data-[state=open]:text-green-dark data-[highlighted]:text-green-dark data-[highlighted]:data-[state=open]:text-green-dark capitalize"
               >
-                {item.properties.Name.title[0].plain_text}
+                {item.properties.Name.title[0]?.plain_text}
               </Menubar.Item>
             ))}
           </Menubar.Content>
