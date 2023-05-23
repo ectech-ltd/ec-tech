@@ -32,38 +32,47 @@ const NotionClient = {
     tag?: string
     search?: string
   }) {
-    let filter = undefined
+    let filterProps = []
     if (category) {
-      filter = {
+      filterProps.push({
         property: 'Category',
         relation: {
           contains: category,
         },
-      }
+      })
     }
     if (tag) {
-      filter = {
+      filterProps.push({
         property: 'Keywords',
         relation: {
           contains: tag,
         },
-      }
+      })
     }
     if (search) {
-      filter = {
+      filterProps.push({
         property: 'Title',
         title: {
           contains: search,
         },
-      }
+      })
     } else {
-      filter = {
-        ...(filter || {}),
+      filterProps.push({
         property: 'Title',
         title: {
           is_not_empty: true,
         },
-      }
+      })
+    }
+
+    const filter = {
+      and: [
+        {
+          property: 'Status',
+          status: { equals: 'Public' },
+        },
+        ...filterProps,
+      ],
     }
 
     const data: IProjectsResp = await notion.databases.query({
@@ -91,6 +100,10 @@ const NotionClient = {
             title: {
               is_not_empty: true,
             },
+          },
+          {
+            property: 'Status',
+            status: { equals: 'Public' },
           },
         ],
       },

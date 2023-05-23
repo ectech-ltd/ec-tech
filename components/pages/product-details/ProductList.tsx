@@ -15,7 +15,7 @@ export default memo(function ProductList({ data }: { data: IProduct[] }) {
             href={[
               '/products',
               slugify(
-                `${item.properties.Title.title[0]?.plain_text}.${item.id}`,
+                `${item.properties.Title?.title[0]?.plain_text}.${item.id}`,
               ),
             ]?.join('/')}
             className="w-full bg-green-50"
@@ -23,16 +23,16 @@ export default memo(function ProductList({ data }: { data: IProduct[] }) {
           >
             <div className="border border-gray-400 hover:border-green-dark rounded-lg overflow-hidden divide-y">
               <img
-                src={item.properties.Photos.files[0]?.file.url}
-                alt={item.properties.Photos.files[0]?.name}
+                src={item.properties.Photos?.files[0]?.file.url}
+                alt={item.properties.Photos?.files[0]?.name}
                 className="w-full h-full object-cover min-h-[268px]"
               />
               <div className="py-3">
                 <div className="px-3 text-lg font-bold truncate">
-                  {item.properties.Title.title[0]?.plain_text}
+                  {item.properties.Title?.title[0]?.plain_text}
                 </div>
                 <div className="px-3 text-base">
-                  {item.properties.Rate.select.name}
+                  {item.properties.Rate?.select?.name}
                 </div>
               </div>
             </div>

@@ -48,15 +48,6 @@ export default function ContactForm() {
     e.preventDefault()
     try {
       setLoading(true)
-      console.log(`>>>`, {
-        location,
-        area,
-        bill,
-        powerUsage,
-        name,
-        phone,
-        email,
-      })
       if (
         !location ||
         !area ||

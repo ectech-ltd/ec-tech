@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { memo, useEffect, useState } from 'react'
 import slugify from 'slugify'
 import { useProductsContext } from './context'
+import classNames from 'classnames'
 
 const ProductLoading = () => {
   return (
@@ -36,7 +37,7 @@ export default memo(function ProductList() {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 grid-flow-row auto-rows-fr">
         {data.map((item) => (
           <Link
             href={[
@@ -45,21 +46,28 @@ export default memo(function ProductList() {
                 `${item.properties.Title.title[0]?.plain_text}.${item.id}`,
               ),
             ]?.join('/')}
-            className="w-full bg-green-50"
+            className="w-full relative"
             key={item.id}
           >
-            <div className="border border-gray-400 hover:border-green-dark rounded-lg overflow-hidden divide-y min-h-[445px]">
+            <div className="border border-gray-400 hover:border-green-dark rounded-lg overflow-hidden divide-y min-h-[445px] h-full bg-white">
               <img
-                src={item.properties.Photos.files[0]?.file.url}
+                src={
+                  item.properties.Photos.files[0]?.file.url ||
+                  '/img/logo-text.svg'
+                }
                 alt={item.properties.Photos.files[0]?.name}
-                className="w-full h-full object-cover min-h-[397px]"
+                className={classNames('w-full min-h-[397px]', {
+                  'object-contain px-12':
+                    !item.properties.Photos.files[0]?.file.url,
+                  'object-cover': item.properties.Photos.files[0]?.file.url,
+                })}
               />
               <div className="py-3">
                 <div className="px-3 text-lg font-bold">
                   {item.properties.Title.title[0]?.plain_text}
                 </div>
                 <div className="px-3 text-base">
-                  {item.properties.Rate.select.name}
+                  {item.properties.Rate?.select?.name}
                 </div>
               </div>
             </div>

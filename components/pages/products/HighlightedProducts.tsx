@@ -16,7 +16,7 @@ export default function HighlightedProducts({ data }: { data: IProduct[] }) {
             href={
               '/products/' +
               slugify(
-                `${item.properties.Title.title[0]?.plain_text}.${item.id}`,
+                `${item.properties.Title?.title[0]?.plain_text}.${item.id}`,
               )
             }
             className={classNames(
@@ -31,7 +31,7 @@ export default function HighlightedProducts({ data }: { data: IProduct[] }) {
             />
             <div className="flex-1 px-2">
               <p>{item.properties.Title.title[0]?.plain_text}</p>
-              <p>{item.properties.Rate.select.name}</p>
+              <p>{item.properties.Rate?.select?.name}</p>
             </div>
           </Link>
         ))}
