@@ -49,6 +49,7 @@ interface Properties {
   Added: Added
   Highlighted: Highlighted
   Title: Title
+  Slug: Spec
 }
 
 interface Category {

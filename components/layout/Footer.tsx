@@ -3,13 +3,13 @@ import Image from 'next/image'
 export default function Footer() {
   return (
     <footer
-      className="absolute w-full py-8 md:py-12"
+      className="absolute w-full px-0 md:px-6 lg:px-12 py-8 md:py-12"
       style={{
         background:
           'radial-gradient(474.26% 474.26% at 50% 50%, #E9FFF5 0%, rgba(43, 62, 17, 0) 100%)',
       }}
     >
-      <div className="max-w-[86rem] mx-auto px-6 md:px-0">
+      <div className="max-w-6xl mx-auto px-6 md:px-0">
         <Image
           src="/img/logo-text.svg"
           width={150}
@@ -17,8 +17,8 @@ export default function Footer() {
           alt="logo"
           className="h-16 md:h-20"
         />
-        <div className="flex flex-wrap justify-between items-start -mx-4 text-gray-900 text-sm mt-2 md:mt-10 space-y-6 md:space-y-0">
-          <div className="px-6 w-full md:w-1/4 space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-gray-900 text-sm mt-2 md:mt-10 space-y-6 md:space-y-0">
+          <div className="w-full space-y-3">
             <p className="font-bold text-lg">Thông tin:</p>
             <h2 className="font-bold">Công ty TNHH EC-TECH</h2>
             <p className="font-bold">
@@ -45,12 +45,12 @@ export default function Footer() {
               </span>
             </p>
           </div>
-          <div className="px-6 w-full md:w-1/4 space-y-3">
+          <div className="w-full space-y-3">
             <p className="font-bold text-lg">Tổng đài tư vấn:</p>
             <p>0936241501</p>
             <p className="font-bold text-lg">Email hỗ trợ khách hàng:</p>
             <a href="mailto:support@gmail.com">support@gmail.com</a>
-            <div className="flex items-center justify-center -mx-2">
+            <div className="flex items-center justify-center">
               <div className="px-2 w-1/2">
                 <Image
                   src="/img/bo-cong-thuong.png"
@@ -64,7 +64,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="px-6 w-full md:w-1/4 space-y-3">
+          <div className="w-full space-y-3">
             <p className="font-bold text-lg">Chính sách:</p>
             <ul>
               <li>Chính sách bảo hành</li>
@@ -73,14 +73,14 @@ export default function Footer() {
               <li>Chính sách bảo mật thông tin</li>
             </ul>
           </div>
-          <div className="px-6 w-full md:w-1/4 space-y-3">
+          <div className="w-full space-y-3 overflow-hidden">
             <p className="font-bold text-lg">Fanpage:</p>
             <div
-              className="fb-page"
+              className="fb-page border-none overflow-hidden w-full"
               data-href="https://www.facebook.com/dienmatroiectech"
               data-tabs="timeline"
               data-width=""
-              data-height="240"
+              data-height="200"
               data-small-header="false"
               data-adapt-container-width="true"
               data-hide-cover="false"
@@ -96,14 +96,16 @@ export default function Footer() {
               </blockquote>
             </div>
             <p className="font-bold text-lg">Địa điểm:</p>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15676.12305399268!2d106.7128678!3d10.8089557!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xac6ca2a1ad3f4133%3A0xf3f057ec254598e5!2zxJBp4buHbiBt4bq3dCB0cuG7nWkgRWMtVGVjaA!5e0!3m2!1svi!2s!4v1684730473358!5m2!1svi!2s"
-              data-width="340"
-              data-height="300"
-              className="border-none"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+            <div className="overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15676.12305399268!2d106.7128678!3d10.8089557!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xac6ca2a1ad3f4133%3A0xf3f057ec254598e5!2zxJBp4buHbiBt4bq3dCB0cuG7nWkgRWMtVGVjaA!5e0!3m2!1svi!2s!4v1684730473358!5m2!1svi!2s"
+                data-width="260"
+                data-height="300"
+                className="border-none overflow-hidden w-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>

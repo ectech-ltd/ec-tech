@@ -30,7 +30,7 @@ export default function ProductsContextProvider({
   const tag = searchParams?.get('tag') as string
   const search = searchParams?.get('search') as string
 
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(true)
   const [hasMore, setHasMore] = useState<boolean>(false)
   const [data, setData] = useState<IProduct[]>([])
   const [nextPage, setNextPage] = useState<string | undefined>(undefined)

@@ -5,7 +5,7 @@ import { NotionRenderer } from 'react-notion-x'
 
 export default function ProductDetailHeader({ data }: { data: IProduct }) {
   return (
-    <div className="px-0 md:px-6">
+    <div className="px-0 md:px-6 lg:px-12">
       <h1 className="text-3xl font-bold">
         {data.properties.Title.title[0]?.plain_text}
       </h1>

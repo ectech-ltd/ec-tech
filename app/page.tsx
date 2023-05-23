@@ -11,14 +11,16 @@ export default async function Home() {
   const [productRsp] = await Promise.all([NotionClient.getHightedProducts()])
 
   return (
-    <main className="min-h-screen space-y-8 md:space-y-14 px-6 md:px-0">
+    <main className="min-h-screen">
       <HomePageSlider />
-      <AboutUs />
-      <OurServices />
-      <HighlightProducts data={productRsp.results} />
-      <HighlightProjects />
-      <ContactForm />
-      <OurPartners />
+      <div className="px-6 mt-8 md:mt-14 space-y-8 md:space-y-14">
+        <AboutUs />
+        <OurServices />
+        <HighlightProducts data={productRsp.results} />
+        <HighlightProjects />
+        <ContactForm />
+        <OurPartners />
+      </div>
     </main>
   )
 }

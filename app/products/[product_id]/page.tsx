@@ -53,7 +53,7 @@ export default async function Page({
   ])
 
   return (
-    <main className="min-h-screen max-w-[86rem] mx-auto py-6 px-6 md:px-0">
+    <main className="min-h-screen max-w-6xl mx-auto py-6 px-6 md:px-6 lg:px-12">
       <div className="flex items-start flex-wrap justify-between">
         <div className="w-full md:w-1/3">
           <ImageGallery data={resp.data.properties.Photos?.files || []} />

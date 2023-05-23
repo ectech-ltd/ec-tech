@@ -18,8 +18,8 @@ export default async function Page({
     NotionClient.getHightedProducts(),
   ])
   return (
-    <main className="min-h-screen max-w-[86rem] mx-auto py-6 md:px-0 flex items-start justify-between flex-wrap">
-      <div className="hidden md:block w-0 md:w-80">
+    <main className="min-h-screen max-w-6xl px-6 lg:px-12 mx-auto py-6 flex items-start justify-between flex-wrap">
+      <div className="hidden md:block w-0 md:w-80 lg:w-60">
         <div className="space-y-6">
           <ProductSearchBox />
           <CategoryList
@@ -34,7 +34,7 @@ export default async function Page({
         </div>
       </div>
       <ProductsContextProvider>
-        <div className="flex-1 px-6">
+        <div className="flex-1">
           <div className="block mb-4 md:hidden space-y-4">
             <MobileFilter tags={tagResp.results} categories={catResp.results} />
             <ProductSearchBox />

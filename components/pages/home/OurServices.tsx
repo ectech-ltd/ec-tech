@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Slider, { Settings } from 'react-slick'
 import cls from 'classnames'
 import { useRef, useState } from 'react'
+import Link from 'next/link'
 
 const settings: Settings = {
   dots: true,
@@ -62,7 +63,7 @@ export default function OurServices() {
   return (
     <div
       id="our-services"
-      className="relative max-w-[86rem] mx-auto space-y-4 overflow-hidden"
+      className="relative max-w-6xl px-0 md:px-6 lg:px-12 mx-auto space-y-4 overflow-hidden"
     >
       <LogoLabel label="Dịch vụ" />
       <div className="relative z-0 w-full">
@@ -74,9 +75,11 @@ export default function OurServices() {
           <p className="text-sm md:text-lg">
             {services[currentIdx]?.description}
           </p>
-          <button className="bg-white text-green-dark font-semibold flex items-center justify-center text-sm md:text-xl px-6 md:px-12 py-1 md:py-3 rounded-lg hover:bg-slate-100">
-            {services[currentIdx]?.CTA}
-          </button>
+          <Link href="/#contact-us">
+            <button className="bg-white text-green-dark font-semibold flex items-center justify-center text-sm md:text-lg px-6 md:px-10 py-1 md:py-2 rounded-lg hover:bg-slate-100">
+              {services[currentIdx]?.CTA}
+            </button>
+          </Link>
         </div>
         <Slider
           {...settings}

@@ -35,10 +35,10 @@ const services = [
 export default function OurPartners() {
   return (
     <div id="our-partners" className="relative mx-auto space-y-4">
-      <div className="relative max-w-[86rem] mx-auto">
+      <div className="relative max-w-6xl px-0 md:px-6 lg:px-12 mx-auto">
         <LogoLabel label="Thương hiệu của chúng tôi" />
       </div>
-      <div className="-mx-6 md:mx-0">
+      <div className="mx-0">
         <Marquee
           className="flex justify-center items-center overflow-hidden bg-white py-2"
           pauseOnHover

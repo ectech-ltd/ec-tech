@@ -18,7 +18,7 @@ export default function HomePageSlider() {
   const [currentIdx, setCurrentIdx] = useState(0)
 
   return (
-    <div className="-mx-6 md:mx-0">
+    <div className="md:mx-0 overflow-hidden">
       <div className="relative z-0 w-full">
         <Slider
           {...settings}

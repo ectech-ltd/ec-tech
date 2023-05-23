@@ -1,3 +1,6 @@
+import slugify from 'slugify'
+import { IProduct } from '../notion/products'
+
 export function formatCurrency(num = 0, currency = 'USD') {
   try {
     if (num <= 0.001) {
@@ -46,4 +49,12 @@ export function formatPercent(num = 0) {
   } catch (err) {
     return `${num}%`
   }
+}
+
+export function createSlug(product: IProduct) {
+  const slug =
+    product.properties.Slug.rich_text[0]?.plain_text.replace('/', '') ||
+    product.properties.Title.title[0]?.plain_text
+
+  return ['/products', slugify(`${slug}.${product.id}`)]?.join('/')
 }

@@ -1,18 +1,15 @@
 'use client'
 /* eslint-disable @next/next/no-img-element */
-import NotionClient from '@/lib/notion'
-import { IProduct } from '@/lib/notion/products'
-import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
-import { memo, useEffect, useState } from 'react'
-import slugify from 'slugify'
+import { memo } from 'react'
 import { useProductsContext } from './context'
 import classNames from 'classnames'
+import { createSlug } from '@/lib/utils/string'
 
 const ProductLoading = () => {
   return (
-    <div className="botder border-gray-400 bg-green-50 rounded-lg overflow-hidden min-h-[445px]">
+    <div className="botder border-gray-400 bg-green-50 rounded-lg overflow-hidden h-[260px]">
       <div className="animate-pulse w-full h-full divide-y flex flex-col">
         <div className="flex w-full items-center justify-center flex-1">
           <Image
@@ -36,34 +33,29 @@ export default memo(function ProductList() {
   const { data, hasMore, loading, loadMore } = useProductsContext()
 
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 grid-flow-row auto-rows-fr">
+    <div className="space-y-6 px-0 md:pl-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 grid-flow-row auto-rows-fr">
         {data.map((item) => (
           <Link
-            href={[
-              '/products',
-              slugify(
-                `${item.properties.Title.title[0]?.plain_text}.${item.id}`,
-              ),
-            ]?.join('/')}
+            href={createSlug(item)}
             className="w-full relative"
             key={item.id}
           >
-            <div className="border border-gray-400 hover:border-green-dark rounded-lg overflow-hidden divide-y min-h-[445px] h-full bg-white">
+            <div className="border border-gray-400 hover:border-green-dark rounded-lg overflow-hidden divide-y min-h-[260px] h-full bg-white">
               <img
                 src={
                   item.properties.Photos.files[0]?.file.url ||
                   '/img/logo-text.svg'
                 }
                 alt={item.properties.Photos.files[0]?.name}
-                className={classNames('w-full min-h-[397px]', {
+                className={classNames('w-full h-[250px] max-h-72', {
                   'object-contain px-12':
                     !item.properties.Photos.files[0]?.file.url,
-                  'object-cover': item.properties.Photos.files[0]?.file.url,
+                  'object-contain': item.properties.Photos.files[0]?.file.url,
                 })}
               />
               <div className="py-3">
-                <div className="px-3 text-lg font-bold">
+                <div className="px-3 text-lg font-bold flex-1">
                   {item.properties.Title.title[0]?.plain_text}
                 </div>
                 <div className="px-3 text-base">
@@ -75,7 +67,7 @@ export default memo(function ProductList() {
         ))}
       </div>
       {loading && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <ProductLoading />
           <ProductLoading />
         </div>

@@ -83,7 +83,10 @@ export default function ContactForm() {
   }
 
   return (
-    <div id="contact-us" className="relative max-w-[86rem] mx-auto space-y-4">
+    <div
+      id="contact-us"
+      className="relative max-w-6xl px-0 md:px-6 lg:px-12 mx-auto space-y-4"
+    >
       <LogoLabel label="Liên hệ" />
       <div className="relative z-0 w-full px-0 md:px-12">
         <form

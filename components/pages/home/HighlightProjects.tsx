@@ -40,7 +40,10 @@ const services = [
 
 export default function HighlightProjects() {
   return (
-    <div id="projects" className="relative max-w-[86rem] mx-auto">
+    <div
+      id="projects"
+      className="relative max-w-6xl px-0 md:px-6 lg:px-12 mx-auto"
+    >
       <LogoLabel label="Dự án tiêu biểu" />
       <div className="relative z-0 w-full divide-y divide-gray-400">
         {services.map((item, idx) => (

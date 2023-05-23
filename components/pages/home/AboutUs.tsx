@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import LogoLabel from '@/components/LogoLabel'
 import Image from 'next/image'
 
@@ -5,18 +6,22 @@ export default function AboutUs() {
   return (
     <div
       id="about-us"
-      className="relative max-w-[86rem] mx-auto flex items-center justify-between"
+      className="relative max-w-6xl px-0 md:px-6 lg:px-12 mx-auto flex items-stretch justify-between"
     >
-      <div className="flex flex-wrap items-center justify-center w-full -mx-4">
-        <div className="hidden md:block w-3/5 px-4">
-          <Image src="/img/image 3.png" width={995} height={599} alt="logo" />
+      <div className="flex flex-wrap items-center justify-center w-full">
+        <div className="hidden md:block w-1/2 xl:w-3/5 h-full">
+          <img
+            src="/img/image 3.png"
+            alt="logo"
+            className="h-full w-full object-cover"
+          />
         </div>
-        <div className="w-full md:w-2/5 px-4 space-y-4">
+        <div className="w-full px-0 md:pl-6 md:w-1/2 xl:w-2/5 space-y-4">
           <LogoLabel label="Về chúng tôi" />
-          <h2 className="text-black text-2xl md:text-4xl font-extrabold text-center md:text-left">
+          <h2 className="text-black text-xl md:text-3xl font-extrabold text-center md:text-left">
             “ We are the Best-In-Class Products & Solutions ”
           </h2>
-          <p className="text-sm font-semibold">
+          <p className="text-xs font-semibold text-justify">
             Công ty TNHH Ec-Tech là một công ty khởi nghiệp về thi công lắp đặt
             điện tái tạo, tập trung vào việc giảm thiểu lượng khí thải carbon và
             góp phần bảo vệ môi trường thông qua sử dụng năng lượng xanh.

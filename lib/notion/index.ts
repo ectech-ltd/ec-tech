@@ -118,6 +118,12 @@ const NotionClient = {
     const data: any = await notion.databases.query({
       database_id: TABLE_ID_CATEGORIES!,
       page_size: 20,
+      filter: {
+        property: 'Name',
+        title: {
+          is_not_empty: true,
+        },
+      },
     })
 
     return data as ICategoriesResp
@@ -126,6 +132,12 @@ const NotionClient = {
     const data: any = await notion.databases.query({
       database_id: TABLE_ID_TAGS!,
       page_size: 20,
+      filter: {
+        property: 'Name',
+        title: {
+          is_not_empty: true,
+        },
+      },
     })
     return data as ITagsResp
   },
