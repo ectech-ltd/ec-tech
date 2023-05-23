@@ -2,8 +2,9 @@ import axios from 'axios'
 import { ICategoriesResp } from './categories'
 import { IProduct, IProjectsResp } from './products'
 import { ITagsResp } from './tags'
-
-const { Client } = require('@notionhq/client')
+import { Client } from '@notionhq/client'
+// @ts-ignore
+import { NotionAPI } from 'notion-client'
 
 const TABLE_ID_PROJECTS = process.env.NOTION_TABLE_ID_PROJECTS
 const TABLE_ID_PRODUCTS = process.env.NOTION_TABLE_ID_PRODUCTS
@@ -16,6 +17,8 @@ const TABLE_ID_CONTACTS = process.env.NOTION_TABLE_ID_CONTACTS
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 })
+
+const notionX = new NotionAPI()
 
 const NotionClient = {
   async getProjects() {},
@@ -65,7 +68,7 @@ const NotionClient = {
       })
     }
 
-    const filter = {
+    const filter: any = {
       and: [
         {
           property: 'Status',
@@ -75,18 +78,18 @@ const NotionClient = {
       ],
     }
 
-    const data: IProjectsResp = await notion.databases.query({
-      database_id: TABLE_ID_PRODUCTS,
+    const data: any = await notion.databases.query({
+      database_id: TABLE_ID_PRODUCTS!,
       page_size: +page_size,
       start_cursor,
       filter,
     })
 
-    return data
+    return data as IProjectsResp
   },
   async getHightedProducts() {
-    const data: IProjectsResp = await notion.databases.query({
-      database_id: TABLE_ID_PRODUCTS,
+    const data: any = await notion.databases.query({
+      database_id: TABLE_ID_PRODUCTS!,
       filter: {
         and: [
           {
@@ -109,43 +112,44 @@ const NotionClient = {
       },
     })
 
-    return data
+    return data as IProjectsResp
   },
   async getCategories() {
-    const data: ICategoriesResp = await notion.databases.query({
-      database_id: TABLE_ID_CATEGORIES,
+    const data: any = await notion.databases.query({
+      database_id: TABLE_ID_CATEGORIES!,
       page_size: 20,
     })
 
-    return data
+    return data as ICategoriesResp
   },
   async getTags() {
-    const data: ITagsResp = await notion.databases.query({
-      database_id: TABLE_ID_TAGS,
+    const data: any = await notion.databases.query({
+      database_id: TABLE_ID_TAGS!,
       page_size: 20,
     })
-    return data
+    return data as ITagsResp
   },
   async getBlog() {},
   async getProject(id: string) {
     const data = await notion.pages.retrieve({ page_id: id })
     return data as IProduct
   },
-  async getProduct(id: string, skipContent = false) {
-    const data: IProduct = await notion.pages.retrieve({ page_id: id })
+  async getProduct(
+    id: string,
+    skipContent = false,
+  ): Promise<{ data: IProduct; pageContent?: any }> {
+    const data: any = await notion.pages.retrieve({ page_id: id })
     if (skipContent) {
       return { data }
     }
 
-    const { data: pageContent } = await axios.get(
-      `https://notion-api.splitbee.io/v1/page/${id}`,
-    )
+    const pageContent = await notionX.getPage(id)
 
     return { data, pageContent }
   },
   async getRelatedProducts(id: string) {
-    const data: IProjectsResp = await notion.databases.query({
-      database_id: TABLE_ID_PRODUCTS,
+    const data: any = await notion.databases.query({
+      database_id: TABLE_ID_PRODUCTS!,
       page_size: 6,
       filter: {
         and: [
@@ -165,7 +169,7 @@ const NotionClient = {
       },
     })
 
-    return data.results
+    return data.results as IProduct[]
   },
 
   async submitContact({
@@ -187,7 +191,7 @@ const NotionClient = {
   }) {
     await notion.pages.create({
       parent: {
-        database_id: TABLE_ID_CONTACTS,
+        database_id: TABLE_ID_CONTACTS!,
       },
       properties: {
         Name: {

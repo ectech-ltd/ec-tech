@@ -9,6 +9,19 @@ body {
   background: radial-gradient(50% 50% at 50% 50%, #FFFCD7 0%, #F2FFF5 100%);;
 }
 
+/* notion style */
+:root{
+  --notion-max-width: 86rem !important;
+}
+
+.notion-header {
+  display: none !important;
+}
+
+.notion-app {
+  background-color: transparent !important;
+}
+
 /* notion custom style */
 .notion-page {
   max-width: 86rem !important;
@@ -21,4 +34,8 @@ body {
 
 .notion-title{
   display: none !important;
+}
+
+.notion-simple-table td {
+  border-color: rgb(46, 46, 46, 0.3) !important;
 }
