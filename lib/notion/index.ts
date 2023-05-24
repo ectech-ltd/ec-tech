@@ -162,7 +162,7 @@ const NotionClient = {
   async getRelatedProducts(id: string) {
     const data: any = await notion.databases.query({
       database_id: TABLE_ID_PRODUCTS!,
-      page_size: 6,
+      page_size: 8,
       filter: {
         and: [
           {
@@ -176,6 +176,10 @@ const NotionClient = {
             title: {
               is_not_empty: true,
             },
+          },
+          {
+            property: 'Status',
+            status: { equals: 'Public' },
           },
         ],
       },

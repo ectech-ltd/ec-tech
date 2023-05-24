@@ -13,7 +13,7 @@ const NProgressHandler = () => {
     }, 500)
 
     return () => clearTimeout(tt)
-  })
+  }, [])
 
   return null
 }

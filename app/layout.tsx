@@ -6,6 +6,8 @@ import Navbar from '@/components/layout/Navbar'
 const font = Montserrat({ subsets: ['latin'] })
 
 import { Metadata } from 'next'
+import Head from 'next/head'
+import Script from 'next/script'
 
 const seoTitle = 'EC-Tech'
 const seoDescription =
@@ -19,7 +21,9 @@ export const metadata: Metadata = {
   viewport: {
     width: 'device-width',
     initialScale: 1,
-    maximumScale: 1,
+  },
+  verification: {
+    google: 'dKftmTMDSJoq_9_0fMAJYXihdQXiHToSlgrf1A8YHlQ',
   },
   openGraph: {
     title: seoTitle,
@@ -48,7 +52,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* Global Site Tag (gtag.js) - Google Analytics */}
       <body className={font.className}>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-9HMGVT2JTS"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-9HMGVT2JTS', {
+                page_path: window.location.pathname,
+              });
+          `}
+        </Script>
         <Navbar />
         {children}
         <Footer />

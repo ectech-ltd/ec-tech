@@ -43,7 +43,7 @@ export default function ProductsContextProvider({
     }
     axios
       .get('/api/products', {
-        params: { page_size: 9, start_cursor: nextPage, category, tag, search },
+        params: { page_size: 9, category, tag, search },
       })
       .then(({ data: resp }: any) => {
         setData(resp.results)
@@ -54,7 +54,7 @@ export default function ProductsContextProvider({
       .finally(() => {
         setLoading(false)
       })
-  }, [nextPage, category, tag, search])
+  }, [category, tag, search])
 
   const loadMore = useCallback(() => {
     axios
