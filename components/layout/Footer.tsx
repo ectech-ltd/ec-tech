@@ -50,19 +50,6 @@ export default function Footer() {
             <p>0936241501</p>
             <p className="font-bold text-lg">Email hỗ trợ khách hàng:</p>
             <a href="mailto:support@gmail.com">support@gmail.com</a>
-            <div className="flex items-center justify-center">
-              <div className="px-2 w-1/2">
-                <Image
-                  src="/img/bo-cong-thuong.png"
-                  width={172}
-                  height={60}
-                  alt="logo"
-                />
-              </div>
-              <div className="px-2 w-1/2">
-                <Image src="/img/DMCA.png" width={136} height={60} alt="logo" />
-              </div>
-            </div>
           </div>
           <div className="w-full space-y-3">
             <p className="font-bold text-lg">Chính sách:</p>

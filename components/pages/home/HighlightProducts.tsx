@@ -1,5 +1,5 @@
+'use client'
 /* eslint-disable @next/next/no-img-element */
-import { Settings } from 'react-slick'
 import { PlusCircledIcon } from '@radix-ui/react-icons'
 import LogoLabel from '@/components/LogoLabel'
 import { IProduct } from '@/lib/notion/products'
