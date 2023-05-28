@@ -39,7 +39,7 @@ export default function HomePageSlider() {
           <div>
             <img
               className="object-cover w-full"
-              src="/img/solar-panel.png"
+              src="/img/banners/bg-sale-1.png"
               alt="solar-panel"
             />
           </div>

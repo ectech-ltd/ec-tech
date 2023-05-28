@@ -17,23 +17,22 @@ export default function HighlightProducts({ data }: { data: IProduct[] }) {
         {data.map((item) => (
           <Link
             href={createSlug(item)}
-            className="relative min-w-[360px] max-w-[360px]"
+            className="relative min-w-[280px] max-w-[280px] min-h-[360px] bg-white"
             key={item.id}
           >
             <img
               src={item.properties.Photos.files[0]?.file.url}
-              width={360}
-              height={300}
               alt={item.properties.Photos.files[0]?.name}
+              className="w-full h-full object-contain"
             />
             <div className="absolute inset-0 z-10 bg-gradient-to-t from-black to-transparent w-full opacity-50" />
             <div className="absolute bottom-0 z-20 p-6 max-w-2xl text-white space-y-6">
-              <div className="text-3xl font-semibold flex items-start gap-2">
+              <div className="text-2xl font-semibold flex items-start gap-2">
                 <div className="">
                   {item.properties.Title.title[0]?.plain_text}
                 </div>
-                <div className="min-w-12">
-                  <PlusCircledIcon fontSize={64} className="h-12 w-12" />
+                <div className="min-w-10">
+                  <PlusCircledIcon fontSize={64} className="h-10 w-10" />
                 </div>
               </div>
             </div>

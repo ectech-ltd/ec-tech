@@ -23,7 +23,7 @@ const services = [
   {
     title: 'Lắp đặt Điện mặt trời hệ bơm',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Trong nông nghiệp, thủy lợi chiếm một phần lớn chi phí của người nông dân. Để giảm thiểu các chi phí này, sử dụng điện năng lượng mặt trời là một giải pháp tối ưu và hiệu quả. Với nguồn điện được tạo ra từ các tấm pin năng lượng mặt trời, khách hàng không cần sử dụng nhiên liệu cho máy phát điện hay trả tiền điện từ lưới điện quốc gia. Điều này giúp tiết kiệm chi phí đáng kể cho người nông dân.',
     img: '/img/image 4.png',
     CTA: 'Liên hệ',
   },
@@ -69,14 +69,14 @@ export default function OurServices() {
       <div className="relative z-0 w-full">
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-black to-transparent w-full" />
         <div className="absolute inset-0 z-20 px-6 py-4 md:p-12 max-w-2xl text-white space-y-2 md:space-y-6">
-          <h2 className="text-lg md:text-5xl font-bold md:font-extrabold uppercase leading-none md:leading-tight">
+          <h2 className="text-xl md:text-5xl font-bold md:font-extrabold uppercase leading-none md:leading-tight">
             {services[currentIdx]?.title}
           </h2>
           <p className="text-sm md:text-lg">
             {services[currentIdx]?.description}
           </p>
           <Link href="/#contact-us">
-            <button className="bg-white text-green-dark font-semibold flex items-center justify-center text-sm md:text-lg px-6 md:px-10 py-1 md:py-2 rounded-lg hover:bg-slate-100">
+            <button className="bg-white text-green-dark font-semibold flex items-center justify-center text-sm md:text-lg px-6 md:px-10 py-1 md:py-2 rounded-lg hover:bg-slate-100 mt-4">
               {services[currentIdx]?.CTA}
             </button>
           </Link>
@@ -116,9 +116,12 @@ export default function OurServices() {
           )}
         >
           {services.map((service, idx) => (
-            <div key={idx} className="relative z-0">
+            <div
+              key={idx}
+              className="relative z-0 min-h-[320px] lg:min-h-[668px] w-full h-full bg-red-200"
+            >
               <img
-                className="object-cover w-full"
+                className="relative w-full h-full min-h-[320px] lg:min-h-[668px]"
                 src={service.img}
                 alt="solar-panel"
               />

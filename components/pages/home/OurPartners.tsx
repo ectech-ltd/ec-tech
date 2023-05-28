@@ -4,31 +4,31 @@ import Marquee from 'react-fast-marquee'
 
 const services = [
   {
-    img: '/img/image 33.png',
+    img: '/img/partners/image 33.png',
   },
   {
-    img: '/img/image 34.png',
+    img: '/img/partners/image 34.png',
   },
   {
-    img: '/img/image 35.png',
+    img: '/img/partners/image 35.png',
   },
   {
-    img: '/img/image 36.png',
+    img: '/img/partners/image 36.png',
   },
   {
-    img: '/img/image 37.png',
+    img: '/img/partners/image 37.png',
   },
   {
-    img: '/img/image 38.png',
+    img: '/img/partners/image 38.png',
   },
   {
-    img: '/img/image 39.png',
+    img: '/img/partners/image 39.png',
   },
   {
-    img: '/img/image 40.png',
+    img: '/img/partners/image 40.png',
   },
   {
-    img: '/img/image 41.png',
+    img: '/img/partners/image 41.png',
   },
 ]
 
