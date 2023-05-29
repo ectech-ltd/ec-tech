@@ -29,28 +29,28 @@ const services = [
   {
     title: 'Lắp đặt Điện mặt trời hệ Lưu trữ',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Đứng trước thực tế nhiều nguồn năng lượng như than đá, dầu mỏ, khí đốt sắp cạn kiệt. Nguồn năng lượng từ gió được coi là nguồn năng lượng trẻ và rất nhiều tiềm năng trong tương lai.',
     img: '/img/image 5.png',
     CTA: 'Liên hệ',
   },
   {
     title: 'Lắp đặt Điện mặt trời hệ Bán tải',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Đứng trước thực tế nhiều nguồn năng lượng như than đá, dầu mỏ, khí đốt sắp cạn kiệt. Nguồn năng lượng từ gió được coi là nguồn năng lượng trẻ và rất nhiều tiềm năng trong tương lai.',
     img: '/img/image 6.png',
     CTA: 'Liên hệ',
   },
   {
     title: 'Lắp đặt Điện Gió',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Đứng trước thực tế nhiều nguồn năng lượng như than đá, dầu mỏ, khí đốt sắp cạn kiệt. Nguồn năng lượng từ gió được coi là nguồn năng lượng trẻ và rất nhiều tiềm năng trong tương lai.',
     img: '/img/image 7.png',
     CTA: 'Liên hệ',
   },
   {
     title: 'Vận hành bảo trì',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Với kinh nghiệm thi công và bảo trì, bảo dưỡng hệ thống điện mặt trời cho hàng trăm hộ gia đình, doanh nghiệp cũng như các nhà máy điện mặt trời có công suất lớn, nhỏ . Chúng tôi đã và đang được nhiều nhà đầu tư, hộ gia đình lựa chọn để giúp các họ tiết kiệm thời gian – công sức – tiền bạc để từ đó thu được lợi nhuận tốt nhất',
     img: '/img/image 8.png',
     CTA: 'Bảo hành',
   },
