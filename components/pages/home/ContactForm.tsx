@@ -1,4 +1,3 @@
-'use client'
 import LogoLabel from '@/components/LogoLabel'
 import Select from '@/components/Select/indext'
 

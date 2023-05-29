@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import NotionClient from '@/lib/notion'
-import { ICategory } from '@/lib/notion/categories'
 import { IProduct } from '@/lib/notion/products'
 import { createSlug } from '@/lib/utils/string'
 import classNames from 'classnames'

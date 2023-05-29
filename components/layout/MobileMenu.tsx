@@ -1,5 +1,3 @@
-'use client'
-import React from 'react'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'

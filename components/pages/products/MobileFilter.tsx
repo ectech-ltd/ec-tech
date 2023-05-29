@@ -1,9 +1,8 @@
-'use client'
 import React from 'react'
 import * as Menubar from '@radix-ui/react-menubar'
 import { ICategory } from '@/lib/notion/categories'
 import { ITag } from '@/lib/notion/tags'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/router'
 
 const MobileFilter = ({
   categories,

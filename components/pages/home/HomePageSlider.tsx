@@ -1,4 +1,3 @@
-'use client'
 import { useState } from 'react'
 /* eslint-disable @next/next/no-img-element */
 import Slider, { Settings } from 'react-slick'

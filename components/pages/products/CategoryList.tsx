@@ -1,4 +1,3 @@
-import NotionClient from '@/lib/notion'
 import { ICategory } from '@/lib/notion/categories'
 import classNames from 'classnames'
 import Link from 'next/link'

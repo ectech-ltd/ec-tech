@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { ICategoriesResp } from './categories'
 import { IProduct, IProjectsResp } from './products'
 import { ITagsResp } from './tags'

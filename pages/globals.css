@@ -48,7 +48,7 @@ body {
 }
 
 #nprogress .bar {
-  @apply bg-pink-600;
+  @apply bg-green-dark;
 
   position: fixed;
   z-index: 1031;

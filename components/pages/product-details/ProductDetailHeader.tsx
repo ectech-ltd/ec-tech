@@ -1,7 +1,5 @@
-'use client'
 import { IProduct } from '@/lib/notion/products'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
-import { NotionRenderer } from 'react-notion-x'
 
 export default function ProductDetailHeader({ data }: { data: IProduct }) {
   return (

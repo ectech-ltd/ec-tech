@@ -1,4 +1,3 @@
-import NotionClient from '@/lib/notion'
 import { ITag } from '@/lib/notion/tags'
 import classNames from 'classnames'
 import Link from 'next/link'

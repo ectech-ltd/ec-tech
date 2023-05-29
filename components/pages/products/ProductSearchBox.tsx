@@ -1,13 +1,11 @@
-'use client'
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
-import { useProductsContext } from './context'
 import { ChangeEvent, useCallback, useRef } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
 import qs from 'qs'
+import { useRouter } from 'next/router'
 
 export function ProductSearchBox() {
   const router = useRouter()
-  const searchParams = useSearchParams()
+  const searchParams = router.query
   const ref = useRef<any>()
   const onSearch = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +18,9 @@ export function ProductSearchBox() {
           ...searchParams,
           search: e.target.value,
         })
-        router.push(`/products?${q}`, { forceOptimisticNavigation: true })
+        router.push(`/products?${q}`, `/products?${q}`, {
+          shallow: true,
+        })
       }, 250)
     },
     [searchParams, router],

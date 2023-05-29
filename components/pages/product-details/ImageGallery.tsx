@@ -1,4 +1,3 @@
-'use client'
 import { IFile } from '@/lib/notion/products'
 import classNames from 'classnames'
 import { useRef, useState } from 'react'

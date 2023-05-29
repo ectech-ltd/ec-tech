@@ -1,4 +1,3 @@
-'use client'
 /* eslint-disable @next/next/no-img-element */
 import { PlusCircledIcon } from '@radix-ui/react-icons'
 import LogoLabel from '@/components/LogoLabel'

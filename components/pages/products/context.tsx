@@ -1,4 +1,3 @@
-'use client'
 import { IProduct } from '@/lib/notion/products'
 import createContext from '@/lib/utils/createContext'
 import axios from 'axios'
