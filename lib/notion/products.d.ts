@@ -1,4 +1,4 @@
-export interface IProjectsResp {
+export interface IProductResp {
   object: string
   results: IProduct[]
   next_cursor: string

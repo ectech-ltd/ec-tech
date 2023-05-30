@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { memo } from 'react'
 import { useProductsContext } from './context'
 import classNames from 'classnames'
-import { createSlug } from '@/lib/utils/string'
+import { createProductSlug } from '@/lib/utils/string'
 
 const ProductLoading = () => {
   return (
@@ -36,7 +36,7 @@ export default memo(function ProductList() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 grid-flow-row auto-rows-fr">
         {data.map((item) => (
           <Link
-            href={createSlug(item)}
+            href={createProductSlug(item)}
             className="w-full relative"
             key={item.id}
           >

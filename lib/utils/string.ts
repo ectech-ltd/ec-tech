@@ -1,5 +1,7 @@
 import slugify from 'slugify'
 import { IProduct } from '../notion/products'
+import { IProject } from '../notion/project'
+import { IBlog } from '../notion/blogs'
 
 export function formatCurrency(num = 0, currency = 'USD') {
   try {
@@ -51,10 +53,21 @@ export function formatPercent(num = 0) {
   }
 }
 
-export function createSlug(product: IProduct) {
+export function createProductSlug(product: IProduct) {
   const slug =
     product.properties.Slug.rich_text[0]?.plain_text.replace('/', '') ||
     product.properties.Title.title[0]?.plain_text
 
-  return ['/products', slugify(`${slug}.${product.id}`)]?.join('/')
+  return ['/san-pham', slugify(`${slug}.${product.id}`)]?.join('/')
+}
+
+export function createProjectSlug(product: IProject) {
+  const slug = product.properties.Page.title[0]?.plain_text
+
+  return ['/du-an', slugify(`${slug}.${product.id}`)]?.join('/')
+}
+export function createBlogSlug(product: IBlog) {
+  const slug = product.properties.Title.title[0]?.plain_text
+
+  return ['/tin-tuc-va-khuyen-mai', slugify(`${slug}.${product.id}`)]?.join('/')
 }

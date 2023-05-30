@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import LogoLabel from '@/components/LogoLabel'
-import Image from 'next/image'
+import Link from 'next/link'
 
 export default function AboutUs() {
   return (
@@ -38,6 +38,11 @@ export default function AboutUs() {
             Liên hệ với chúng tôi để được tư vấn và báo giá miễn phí, và chung
             tay đóng góp vào một tương lai xanh hơn cho hành tinh này.
           </p>
+          <Link href="/ve-chung-toi">
+            <button className="bg-[#0571FA] text-white font-semibold flex items-center justify-center text-sm md:text-base px-6 md:px-10 py-1 md:py-2 rounded-lg hover:bg-opacity-80 mt-4">
+              Tìm hiểu thêm
+            </button>
+          </Link>
         </div>
       </div>
     </div>

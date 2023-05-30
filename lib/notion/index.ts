@@ -1,16 +1,21 @@
+import { map } from 'lodash'
 import { ICategoriesResp } from './categories'
-import { IProduct, IProjectsResp } from './products'
+import { IProduct, IProductResp } from './products'
 import { ITagsResp } from './tags'
 import { Client } from '@notionhq/client'
 // @ts-ignore
 import { NotionAPI } from 'notion-client'
+import { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints'
+import { IProject, IProjectResp } from './project'
+import { IBlog, IBlogsResp } from './blogs'
 
-const TABLE_ID_PROJECTS = process.env.NOTION_TABLE_ID_PROJECTS
 const TABLE_ID_PRODUCTS = process.env.NOTION_TABLE_ID_PRODUCTS
 const TABLE_ID_CATEGORIES = process.env.NOTION_TABLE_ID_CATEGORIES
 const TABLE_ID_TAGS = process.env.NOTION_TABLE_ID_TAGS
-const TABLE_ID_BLOG = process.env.NOTION_TABLE_ID_BLOG
 const TABLE_ID_CONTACTS = process.env.NOTION_TABLE_ID_CONTACTS
+const TABLE_ID_SITE_CONFIGS = process.env.NOTION_TABLE_ID_SITE_CONFIGS
+const TABLE_ID_PROJECTS = process.env.NOTION_TABLE_ID_PROJECTS
+const TABLE_ID_BLOG = process.env.NOTION_TABLE_ID_BLOG
 
 // Initializing a client
 const notion = new Client({
@@ -20,7 +25,170 @@ const notion = new Client({
 const notionX = new NotionAPI()
 
 const NotionClient = {
-  async getProjects() {},
+  async getConfigs() {
+    const data = await notion.databases.query({
+      database_id: TABLE_ID_SITE_CONFIGS!,
+      page_size: 100,
+      filter: {
+        property: 'Name',
+        title: {
+          is_not_empty: true,
+        },
+      },
+      sorts: [
+        {
+          property: 'Name',
+          direction: 'ascending',
+        },
+      ],
+    })
+
+    const homeBanners: any = data.results.filter(
+      (item: any) => item.properties.Type.select.name === 'Home Banners',
+    )
+
+    const services = data.results.filter(
+      (item: any) => item.properties.Type.select.name === 'Our Services',
+    )
+
+    return {
+      homeBanners: map(
+        homeBanners.filter((item: any) => !item.archived),
+        (item: any) => ({
+          id: item.id,
+          photo: item.properties.Photos?.files[0].file.url || [],
+          name: item.properties.Name?.plain_text || '',
+          url: item.properties.URL?.url || '',
+        }),
+      ).filter((item) => item.photo),
+      services: map(
+        services.filter((item: any) => !item.archived),
+        (item: any) => ({
+          id: item.id,
+          url: item.properties.URL?.url || '',
+          photo: item.properties.Photos?.files[0].file.url || '',
+          cta: item.properties.CTA?.rich_text[0].plain_text || '',
+          title:
+            (item.properties.Title?.rich_text as RichTextItemResponse) || [],
+          content:
+            (item.properties.Content?.rich_text as RichTextItemResponse) || [],
+        }),
+      ).filter((item) => item.photo),
+    }
+  },
+  async getProjects({
+    page_size = 10,
+    start_cursor,
+    search,
+    highlighted,
+  }: {
+    page_size?: number
+    start_cursor?: string
+    search?: string
+    highlighted?: boolean
+  }) {
+    let filterProps = []
+    if (search) {
+      filterProps.push({
+        property: 'Page',
+        title: {
+          contains: search,
+        },
+      })
+    } else {
+      filterProps.push({
+        property: 'Page',
+        title: {
+          is_not_empty: true,
+        },
+      })
+    }
+
+    if (highlighted) {
+      filterProps.push({
+        property: 'Highlighted',
+        checkbox: {
+          equals: true,
+        },
+      })
+    }
+    const filter: any = {
+      and: [
+        {
+          property: 'Status',
+          status: { equals: 'Public' },
+        },
+        ...filterProps,
+      ],
+    }
+
+    const data: any = await notion.databases.query({
+      database_id: TABLE_ID_PROJECTS!,
+      page_size: +page_size,
+      start_cursor,
+      filter,
+      sorts: [
+        {
+          property: 'Created time',
+          direction: 'descending',
+        },
+      ],
+    })
+
+    return data as IProjectResp
+  },
+  async getBlogs({
+    page_size = 10,
+    start_cursor,
+    search,
+  }: {
+    page_size?: number
+    start_cursor?: string
+    search?: string
+    highlighted?: boolean
+  }) {
+    let filterProps = []
+    if (search) {
+      filterProps.push({
+        property: 'Title',
+        title: {
+          contains: search,
+        },
+      })
+    } else {
+      filterProps.push({
+        property: 'Title',
+        title: {
+          is_not_empty: true,
+        },
+      })
+    }
+
+    const filter: any = {
+      and: [
+        {
+          property: 'Status',
+          status: { equals: 'Public' },
+        },
+        ...filterProps,
+      ],
+    }
+
+    const data: any = await notion.databases.query({
+      database_id: TABLE_ID_BLOG!,
+      page_size: +page_size,
+      start_cursor,
+      filter,
+      sorts: [
+        {
+          property: 'Created time',
+          direction: 'descending',
+        },
+      ],
+    })
+
+    return data as IBlogsResp
+  },
   async getProducts({
     page_size = 10,
     start_cursor,
@@ -84,7 +252,7 @@ const NotionClient = {
       filter,
     })
 
-    return data as IProjectsResp
+    return data as IProductResp
   },
   async getHightedProducts() {
     const data: any = await notion.databases.query({
@@ -111,7 +279,7 @@ const NotionClient = {
       },
     })
 
-    return data as IProjectsResp
+    return data as IProductResp
   },
   async getCategories() {
     const data: any = await notion.databases.query({
@@ -140,10 +308,19 @@ const NotionClient = {
     })
     return data as ITagsResp
   },
-  async getBlog() {},
-  async getProject(id: string) {
-    const data = await notion.pages.retrieve({ page_id: id })
-    return data as IProduct
+  async getBlog(id: string): Promise<{ data: IBlog; pageContent?: any }> {
+    const data: any = await notion.pages.retrieve({ page_id: id })
+
+    const pageContent = await notionX.getPage(id)
+
+    return { data, pageContent }
+  },
+  async getProject(id: string): Promise<{ data: IProject; pageContent?: any }> {
+    const data: any = await notion.pages.retrieve({ page_id: id })
+
+    const pageContent = await notionX.getPage(id)
+
+    return { data, pageContent }
   },
   async getProduct(
     id: string,
@@ -265,6 +442,51 @@ const NotionClient = {
         },
       },
     })
+  },
+
+  async getTerms(): Promise<{ pageContent?: any }> {
+    const data = await notion.databases.query({
+      database_id: TABLE_ID_SITE_CONFIGS!,
+      page_size: 100,
+      filter: {
+        property: 'Type',
+        select: {
+          equals: 'Terms',
+        },
+      },
+      sorts: [
+        {
+          property: 'Name',
+          direction: 'ascending',
+        },
+      ],
+    })
+
+    const pageContent = await notionX.getPage(data.results[0].id)
+
+    return { pageContent }
+  },
+  async getFaqs(): Promise<{ pageContent?: any }> {
+    const data = await notion.databases.query({
+      database_id: TABLE_ID_SITE_CONFIGS!,
+      page_size: 100,
+      filter: {
+        property: 'Type',
+        select: {
+          equals: 'FAQs',
+        },
+      },
+      sorts: [
+        {
+          property: 'Name',
+          direction: 'ascending',
+        },
+      ],
+    })
+
+    const pageContent = await notionX.getPage(data.results[0].id)
+
+    return { pageContent }
   },
 }
 

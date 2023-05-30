@@ -7,6 +7,7 @@ import Slider, { Settings } from 'react-slick'
 import cls from 'classnames'
 import { useRef, useState } from 'react'
 import Link from 'next/link'
+import NotionRichText from '@/components/NotionRichtext'
 
 const settings: Settings = {
   dots: true,
@@ -18,47 +19,21 @@ const settings: Settings = {
   slidesToScroll: 1,
 }
 
-const services = [
-  {
-    title: 'Lắp đặt Điện mặt trời hệ bơm',
-    description:
-      'Trong nông nghiệp, thủy lợi chiếm một phần lớn chi phí của người nông dân. Để giảm thiểu các chi phí này, sử dụng điện năng lượng mặt trời là một giải pháp tối ưu và hiệu quả. Với nguồn điện được tạo ra từ các tấm pin năng lượng mặt trời, khách hàng không cần sử dụng nhiên liệu cho máy phát điện hay trả tiền điện từ lưới điện quốc gia. Điều này giúp tiết kiệm chi phí đáng kể cho người nông dân.',
-    img: '/img/image 4.png',
-    CTA: 'Liên hệ',
-  },
-  {
-    title: 'Lắp đặt Điện mặt trời hệ Lưu trữ',
-    description:
-      'Đứng trước thực tế nhiều nguồn năng lượng như than đá, dầu mỏ, khí đốt sắp cạn kiệt. Nguồn năng lượng từ gió được coi là nguồn năng lượng trẻ và rất nhiều tiềm năng trong tương lai.',
-    img: '/img/image 5.png',
-    CTA: 'Liên hệ',
-  },
-  {
-    title: 'Lắp đặt Điện mặt trời hệ Bán tải',
-    description:
-      'Đứng trước thực tế nhiều nguồn năng lượng như than đá, dầu mỏ, khí đốt sắp cạn kiệt. Nguồn năng lượng từ gió được coi là nguồn năng lượng trẻ và rất nhiều tiềm năng trong tương lai.',
-    img: '/img/image 6.png',
-    CTA: 'Liên hệ',
-  },
-  {
-    title: 'Lắp đặt Điện Gió',
-    description:
-      'Đứng trước thực tế nhiều nguồn năng lượng như than đá, dầu mỏ, khí đốt sắp cạn kiệt. Nguồn năng lượng từ gió được coi là nguồn năng lượng trẻ và rất nhiều tiềm năng trong tương lai.',
-    img: '/img/image 7.png',
-    CTA: 'Liên hệ',
-  },
-  {
-    title: 'Vận hành bảo trì',
-    description:
-      'Với kinh nghiệm thi công và bảo trì, bảo dưỡng hệ thống điện mặt trời cho hàng trăm hộ gia đình, doanh nghiệp cũng như các nhà máy điện mặt trời có công suất lớn, nhỏ . Chúng tôi đã và đang được nhiều nhà đầu tư, hộ gia đình lựa chọn để giúp các họ tiết kiệm thời gian – công sức – tiền bạc để từ đó thu được lợi nhuận tốt nhất',
-    img: '/img/image 8.png',
-    CTA: 'Bảo hành',
-  },
-]
-
-export default function OurServices() {
+export default function OurServices({
+  data,
+}: {
+  data: Array<{
+    id: string
+    photo: string
+    title: any
+    content: any
+    cta?: string
+    url?: string
+  }>
+}) {
   const [currentIdx, setCurrentIdx] = useState(0)
   const ref = useRef<Slider>(null)
+
   return (
     <div
       id="our-services"
@@ -69,14 +44,14 @@ export default function OurServices() {
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-black to-transparent w-full" />
         <div className="absolute inset-0 z-20 px-6 py-4 md:p-12 max-w-2xl text-white space-y-2 md:space-y-6">
           <h2 className="text-xl md:text-5xl font-bold md:font-extrabold uppercase leading-none md:leading-tight">
-            {services[currentIdx]?.title}
+            <NotionRichText items={data[currentIdx]?.title} />
           </h2>
           <p className="text-sm md:text-lg">
-            {services[currentIdx]?.description}
+            <NotionRichText items={data[currentIdx]?.content} />
           </p>
-          <Link href="/#contact-us">
+          <Link href={data[currentIdx].url || '/#contact-us'}>
             <button className="bg-white text-green-dark font-semibold flex items-center justify-center text-sm md:text-lg px-6 md:px-10 py-1 md:py-2 rounded-lg hover:bg-slate-100 mt-4">
-              {services[currentIdx]?.CTA}
+              {data[currentIdx]?.cta || 'Liên hệ ngay'}
             </button>
           </Link>
         </div>
@@ -102,11 +77,12 @@ export default function OurServices() {
                       },
                     )}
                   >
-                    <Image
-                      src={services[idx]?.img}
+                    <img
+                      src={data[idx]?.photo}
                       width={300}
                       height={190}
                       alt=""
+                      className="w-full h-full object-cover"
                     />
                   </li>
                 ))}
@@ -114,14 +90,14 @@ export default function OurServices() {
             </div>
           )}
         >
-          {services.map((service, idx) => (
+          {data.map((service) => (
             <div
-              key={idx}
+              key={service.id}
               className="relative z-0 min-h-[320px] lg:min-h-[668px] w-full h-full bg-red-200"
             >
               <img
-                className="relative w-full h-full min-h-[320px] lg:min-h-[668px]"
-                src={service.img}
+                className="relative w-full h-full min-h-[320px] lg:min-h-[668px] object-cover"
+                src={service.photo}
                 alt="solar-panel"
               />
             </div>

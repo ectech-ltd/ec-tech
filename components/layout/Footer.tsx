@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Footer() {
   return (
@@ -49,15 +50,25 @@ export default function Footer() {
             <p className="font-bold text-lg">Tổng đài tư vấn:</p>
             <p>0936241501</p>
             <p className="font-bold text-lg">Email hỗ trợ khách hàng:</p>
-            <a href="mailto:support@gmail.com">support@gmail.com</a>
+            <a href="mailto:info.ectechltd@gmail.com">
+              info.ectechltd@gmail.com
+            </a>
           </div>
           <div className="w-full space-y-3">
             <p className="font-bold text-lg">Chính sách:</p>
             <ul>
-              <li>Chính sách bảo hành</li>
-              <li>Điều khoản dịch vụ </li>
-              <li>Phương thức thanh toán</li>
-              <li>Chính sách bảo mật thông tin</li>
+              <li>
+                <Link href="/chinh-sach">Chính sách bảo hành</Link>
+              </li>
+              <li>
+                <Link href="/chinh-sach">Điều khoản dịch vụ</Link>
+              </li>
+              <li>
+                <Link href="/chinh-sach">Phương thức thanh toán</Link>
+              </li>
+              <li>
+                <Link href="/chinh-sach">Chính sách bảo mật thông tin</Link>
+              </li>
             </ul>
           </div>
           <div className="w-full space-y-3 overflow-hidden">

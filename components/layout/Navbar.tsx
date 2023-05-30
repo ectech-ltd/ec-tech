@@ -18,38 +18,44 @@ export default function Navbar() {
 
         <div className="hidden md:flex text-sm items-center justify-center space-x-4">
           <Link
-            href="/#about-us"
+            href="/#ve-chung-toi"
             className="font-semibold hover:text-green-dark"
           >
             Về chúng tôi
           </Link>
           <Link
-            href="/#our-services"
+            href="/#dich-vu"
             className="font-semibold hover:text-green-dark"
           >
             Dịch vụ
           </Link>
           <Link
-            href="/products"
+            href="/san-pham"
             className="font-semibold hover:text-green-dark"
           >
             Sản phẩm
           </Link>
           <Link
-            href="/#projects"
+            href="/#du-an-tieu-bieu"
             className="font-semibold hover:text-green-dark"
           >
             Dự án tiêu biểu
           </Link>
-          <Link href="/news" className="font-semibold hover:text-green-dark">
+          <Link
+            href="/tin-tuc-va-khuyen-mai"
+            className="font-semibold hover:text-green-dark"
+          >
             Tin tức & Khuyến mãi
           </Link>
 
-          <Link href="/faq" className="font-semibold hover:text-green-dark">
+          <Link
+            href="/cau-hoi-thuong-gap"
+            className="font-semibold hover:text-green-dark"
+          >
             Câu hỏi thường gặp
           </Link>
           <Link
-            href="/#contact-us"
+            href="/#lien-he"
             className="font-semibold hover:text-green-dark"
           >
             Liên hệ

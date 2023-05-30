@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import LogoLabel from '@/components/LogoLabel'
 import { IProduct } from '@/lib/notion/products'
-import { createSlug } from '@/lib/utils/string'
+import { createProductSlug } from '@/lib/utils/string'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { memo } from 'react'
@@ -15,7 +15,7 @@ export default memo(function ProductList({ data }: { data: IProduct[] }) {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 grid-flow-row auto-rows-fr">
         {data.map((item) => (
           <Link
-            href={createSlug(item)}
+            href={createProductSlug(item)}
             className="w-full relative"
             key={item.id}
           >

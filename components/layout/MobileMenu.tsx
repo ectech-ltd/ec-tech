@@ -13,44 +13,44 @@ export default function MobileMenu() {
           <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto">
             <div className="divide-y w-full">
               <Link
-                href="/#about-us"
+                href="/#ve-chung-toi"
                 className="hover:text-[#247B38] px-4 py-2 block"
               >
                 Về chúng tôi
               </Link>
               <Link
-                href="/#our-services"
+                href="/#dich-vu"
                 className="hover:text-[#247B38] px-4 py-2 block"
               >
                 Dịch vụ
               </Link>
               <Link
-                href="/products"
+                href="/san-pham"
                 className="hover:text-[#247B38] px-4 py-2 block"
               >
                 Sản phẩm
               </Link>
               <Link
-                href="/#projects"
+                href="/#du-an-tieu-bieu"
                 className="hover:text-[#247B38] px-4 py-2 block"
               >
                 Dự án tiêu biểu
               </Link>
               <Link
-                href="/news"
+                href="/tin-tuc-va-khuyen-mai"
                 className="hover:text-[#247B38] px-4 py-2 block"
               >
                 Tin tức & Khuyến mãi
               </Link>
 
               <Link
-                href="/faq"
+                href="/cau-hoi-thuong-gap"
                 className="hover:text-[#247B38] px-4 py-2 block"
               >
                 Câu hỏi thường gặp
               </Link>
               <Link
-                href="/#contact-us"
+                href="/#lien-he"
                 className="hover:text-[#247B38] px-4 py-2 block"
               >
                 Liên hệ

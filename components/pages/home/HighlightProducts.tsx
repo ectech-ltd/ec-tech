@@ -3,7 +3,7 @@ import { PlusCircledIcon } from '@radix-ui/react-icons'
 import LogoLabel from '@/components/LogoLabel'
 import { IProduct } from '@/lib/notion/products'
 import Link from 'next/link'
-import { createSlug } from '@/lib/utils/string'
+import { createProductSlug } from '@/lib/utils/string'
 
 export default function HighlightProducts({ data }: { data: IProduct[] }) {
   return (
@@ -15,7 +15,7 @@ export default function HighlightProducts({ data }: { data: IProduct[] }) {
       <div className="relative z-0 w-full flex items-center justify-start gap-3 overflow-scroll flex-nowrap">
         {data.map((item) => (
           <Link
-            href={createSlug(item)}
+            href={createProductSlug(item)}
             className="relative min-w-[280px] max-w-[280px] min-h-[360px] bg-white"
             key={item.id}
           >

@@ -24,21 +24,23 @@ body {
 
 /* notion custom style */
 .notion-page {
-  max-width: 86rem !important;
   margin-top: 32px !important;
   padding: 0 !important;
-}
-.notion-page-header {
-  display: none !important;
-}
-
-.notion-title{
-  display: none !important;
+  width: 100% !important;
 }
 
 .notion-simple-table td {
   border-color: rgb(46, 46, 46, 0.3) !important;
 }
+
+
+.notion-page-icon-hero, 
+.notion-page-cover-wrapper, 
+.notion-title, 
+.notion-page-header {
+  display: none !important;
+}
+
 
 /* purgecss start ignore */
 #nprogress {

@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { IProduct } from '@/lib/notion/products'
-import { createSlug } from '@/lib/utils/string'
+import { createProductSlug } from '@/lib/utils/string'
 import classNames from 'classnames'
 import Link from 'next/link'
 
@@ -11,7 +11,7 @@ export default function HighlightedProducts({ data }: { data: IProduct[] }) {
       <div className="divide-y">
         {data.map((item) => (
           <Link
-            href={createSlug(item)}
+            href={createProductSlug(item)}
             className={classNames(
               'flex items-center justify-between p-2 hover:bg-green-100 font-semibold hover:text-green-dark',
             )}

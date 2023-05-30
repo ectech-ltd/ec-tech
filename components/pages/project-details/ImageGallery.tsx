@@ -1,9 +1,10 @@
-import { useState } from 'react'
-/* eslint-disable @next/next/no-img-element */
-import Slider, { Settings } from 'react-slick'
-import cls from 'classnames'
+import { IFile } from '@/lib/notion/products'
+import classNames from 'classnames'
 import { map } from 'lodash'
+import { useRef, useState } from 'react'
+/* eslint-disable @next/next/no-img-element */
 
+import Slider, { Settings } from 'react-slick'
 const settings: Settings = {
   dots: true,
   infinite: true,
@@ -14,11 +15,7 @@ const settings: Settings = {
   slidesToScroll: 1,
 }
 
-export default function HomePageSlider({
-  data,
-}: {
-  data: Array<{ id: string; url?: string; name: string; photo: string }>
-}) {
+export default function ImageGallery({ data }: { data: IFile[] }) {
   const [currentIdx, setCurrentIdx] = useState(0)
 
   return (
@@ -30,7 +27,7 @@ export default function HomePageSlider({
           beforeChange={(_, next) => setCurrentIdx(next)}
           customPaging={(i) => (
             <div
-              className={cls(
+              className={classNames(
                 'h-2 md:h-3 w-2 md:w-3 rounded-full -mt-6 md:-mt-10',
                 {
                   'bg-[#00FF3B]': i === currentIdx,
@@ -40,11 +37,11 @@ export default function HomePageSlider({
             />
           )}
         >
-          {map(data, (item) => (
-            <div key={item.id}>
+          {map(data, (item: IFile, idx) => (
+            <div key={idx}>
               <img
-                className="object-cover w-full"
-                src={item.photo || '/img/solar-panel.png'}
+                className="object-cover w-full max-h-[60vh]"
+                src={item.file.url || '/img/solar-panel.png'}
                 alt={item.name || 'solar-panel'}
               />
             </div>
