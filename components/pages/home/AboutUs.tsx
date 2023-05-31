@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default function AboutUs() {
   return (
     <div
-      id="about-us"
+      id="lien-he"
       className="relative max-w-6xl px-0 md:px-6 lg:px-12 mx-auto flex items-stretch justify-between"
     >
       <div className="flex flex-wrap items-center justify-center w-full">

@@ -13,7 +13,7 @@ export default function MobileMenu() {
           <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto">
             <div className="divide-y w-full">
               <Link
-                href="/#ve-chung-toi"
+                href="/ve-chung-toi"
                 className="hover:text-[#247B38] px-4 py-2 block"
               >
                 Về chúng tôi

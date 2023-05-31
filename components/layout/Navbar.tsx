@@ -18,7 +18,7 @@ export default function Navbar() {
 
         <div className="hidden md:flex text-sm items-center justify-center space-x-4">
           <Link
-            href="/#ve-chung-toi"
+            href="/ve-chung-toi"
             className="font-semibold hover:text-green-dark"
           >
             Về chúng tôi

@@ -14,7 +14,7 @@ const settings: Settings = {
   infinite: true,
   speed: 500,
   arrows: false,
-  autoplay: false,
+  autoplay: true,
   slidesToShow: 1,
   slidesToScroll: 1,
 }
@@ -36,7 +36,7 @@ export default function OurServices({
 
   return (
     <div
-      id="our-services"
+      id="dich-vu"
       className="relative max-w-6xl px-0 md:px-6 lg:px-12 mx-auto space-y-4 overflow-hidden"
     >
       <LogoLabel label="Dịch vụ" />
@@ -58,6 +58,10 @@ export default function OurServices({
         <Slider
           {...settings}
           ref={ref}
+          beforeChange={(_, next) => {
+            setCurrentIdx(next)
+            ref.current?.slickGoTo(next)
+          }}
           dotsClass="absolute bottom-3 md:bottom-12 left-0 w-full z-20 px-6 md:px-12"
           appendDots={(dots) => (
             <div className="w-full">

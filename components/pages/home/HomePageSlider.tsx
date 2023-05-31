@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Slider, { Settings } from 'react-slick'
 import cls from 'classnames'
 import { map } from 'lodash'
+import Link from 'next/link'
 
 const settings: Settings = {
   dots: true,
@@ -40,15 +41,25 @@ export default function HomePageSlider({
             />
           )}
         >
-          {map(data, (item) => (
-            <div key={item.id}>
-              <img
-                className="object-cover w-full"
-                src={item.photo || '/img/solar-panel.png'}
-                alt={item.name || 'solar-panel'}
-              />
-            </div>
-          ))}
+          {map(data, (item) =>
+            item.url ? (
+              <Link key={item.id} href={item.url}>
+                <img
+                  className="object-cover w-full"
+                  src={item.photo || '/img/solar-panel.png'}
+                  alt={item.name || 'solar-panel'}
+                />
+              </Link>
+            ) : (
+              <div key={item.id}>
+                <img
+                  className="object-cover w-full"
+                  src={item.photo || '/img/solar-panel.png'}
+                  alt={item.name || 'solar-panel'}
+                />
+              </div>
+            ),
+          )}
         </Slider>
       </div>
     </div>

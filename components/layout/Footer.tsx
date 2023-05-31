@@ -58,16 +58,19 @@ export default function Footer() {
             <p className="font-bold text-lg">Chính sách:</p>
             <ul>
               <li>
-                <Link href="/chinh-sach">Chính sách bảo hành</Link>
+                <Link href="/chinh-sach#b3cfaef090e7449988395986c30996de">
+                  Phương thức thanh toán
+                </Link>
               </li>
               <li>
-                <Link href="/chinh-sach">Điều khoản dịch vụ</Link>
+                <Link href="/chinh-sach#48468611bbaf4207b94ea5e2b802a9b7">
+                  Chính sách bảo hành
+                </Link>
               </li>
               <li>
-                <Link href="/chinh-sach">Phương thức thanh toán</Link>
-              </li>
-              <li>
-                <Link href="/chinh-sach">Chính sách bảo mật thông tin</Link>
+                <Link href="/chinh-sach#b3cfaef090e7449988395986c30996de">
+                  Điều khoản dịch vụ
+                </Link>
               </li>
             </ul>
           </div>

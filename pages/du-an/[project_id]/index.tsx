@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import NotionRichText from '@/components/NotionRichtext'
 import NotionPageContent from '@/components/pages/product-details/NotionPageContent'
 import ImageGallery from '@/components/pages/project-details/ImageGallery'
@@ -44,7 +45,13 @@ export default function Page({
           ),
         }}
       />
-      <ImageGallery data={data.properties.Photos?.files || []} />
+      {(data.cover?.external?.url || data.cover?.file?.url) && (
+        <img
+          src={data.cover?.external?.url || data.cover?.file?.url}
+          className="w-screen h-full object-cover"
+          alt={data.properties.Page.title[0]?.plain_text}
+        />
+      )}
       <div className="min-h-screen max-w-6xl mx-auto py-6 px-6 md:px-6 lg:px-12">
         <h1 className="text-lg md:text-3xl font-bold">
           <NotionRichText items={data.properties.Page.title as any} />
