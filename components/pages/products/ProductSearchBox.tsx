@@ -18,7 +18,7 @@ export function ProductSearchBox() {
           ...searchParams,
           search: e.target.value,
         })
-        router.push(`/products?${q}`, `/products?${q}`, {
+        router.push(`/san-pham?${q}`, `/san-pham?${q}`, {
           shallow: true,
         })
       }, 250)

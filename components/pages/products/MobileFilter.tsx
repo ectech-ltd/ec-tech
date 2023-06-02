@@ -29,7 +29,7 @@ const MobileFilter = ({
             {categories.map((item) => (
               <Menubar.Item
                 key={item.id}
-                onClick={() => router.push(`/products?category=${item.id}`)}
+                onClick={() => router.push(`/san-pham?category=${item.id}`)}
                 className="group text-sm leading-none rounded flex items-center h-6 px-2 relative select-none outline-none data-[state=open]:bg-green-100 data-[state=open]:text-green-dark data-[highlighted]:text-green-dark data-[highlighted]:data-[state=open]:text-green-dark capitalize"
               >
                 {item.properties.Name.title[0]?.plain_text}
@@ -53,7 +53,7 @@ const MobileFilter = ({
             {tags.map((item) => (
               <Menubar.Item
                 key={item.id}
-                onClick={() => router.push(`/products?tag=${item.id}`)}
+                onClick={() => router.push(`/san-pham?tag=${item.id}`)}
                 className="group text-sm leading-none rounded flex items-center h-6 px-2 relative select-none outline-none data-[state=open]:bg-green-100 data-[state=open]:text-green-dark data-[highlighted]:text-green-dark data-[highlighted]:data-[state=open]:text-green-dark capitalize"
               >
                 {item.properties.Name.title[0]?.plain_text}

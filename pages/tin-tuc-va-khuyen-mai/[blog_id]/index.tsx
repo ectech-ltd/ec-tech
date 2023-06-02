@@ -42,20 +42,24 @@ export default function Page({
           images: [
             {
               url:
-                data.cover.external?.url ||
-                data.cover.file?.url ||
+                data.cover?.external?.url ||
+                data.cover?.file?.url ||
                 '/img/solar-panel.png',
             },
           ].filter(Boolean),
         }}
       />
       <img
-        src={data.cover.external?.url || data.cover.file?.url}
-        className="w-screen h-full object-cover"
+        src={
+          data.cover?.external?.url ||
+          data.cover?.file?.url ||
+          '/img/solar-panel.png'
+        }
+        className="w-screen h-full max-h-[35vh] object-cover"
         alt={data.properties.Title.title[0]?.plain_text}
       />
       <div className="min-h-screen max-w-6xl mx-auto py-6 px-6 md:px-6 lg:px-12">
-        <h1 className="text-lg md:text-3xl font-bold">
+        <h1 className="text-2xl md:text-3xl font-bold">
           <NotionRichText items={data.properties.Title.title as any} />
         </h1>
         <NotionPageContent recordMap={pageContent} />

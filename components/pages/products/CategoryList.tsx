@@ -15,7 +15,7 @@ export default function CategoryList({
       <div className="divide-y">
         {categories.map((item) => (
           <Link
-            href={`/products?category=${item.id}`}
+            href={`/san-pham?category=${item.id}`}
             className={classNames(
               'block p-2 hover:bg-green-100 font-semibold hover:text-green-dark',
               {

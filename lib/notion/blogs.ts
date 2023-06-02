@@ -14,7 +14,7 @@ export interface IBlog {
   last_edited_time: string
   created_by: CreatedBy
   last_edited_by: LastEditedBy
-  cover: Cover
+  cover?: Cover
   icon: Icon
   parent: Parent
   archived: boolean

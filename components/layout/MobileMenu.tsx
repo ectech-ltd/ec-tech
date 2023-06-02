@@ -31,10 +31,10 @@ export default function MobileMenu() {
                 Sản phẩm
               </Link>
               <Link
-                href="/#du-an-tieu-bieu"
+                href="/du-an"
                 className="hover:text-[#247B38] px-4 py-2 block"
               >
-                Dự án tiêu biểu
+                Dự án
               </Link>
               <Link
                 href="/tin-tuc-va-khuyen-mai"

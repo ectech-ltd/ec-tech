@@ -14,14 +14,14 @@ export default function BlogList({ data }: { data: IBlog[] }) {
           className="relative block h-full w-full bg-white rounded-lg shadow-md"
           key={item.id}
         >
-          <div className="w-full">
+          <div className="w-full rounded-lg overflow-hidden">
             <img
               src={
-                item.cover.external?.url ||
-                item.cover.file?.url ||
+                item.cover?.external?.url ||
+                item.cover?.file?.url ||
                 '/img/solar-panel.png'
               }
-              className="relative w-full h-full object-cover max-h-64"
+              className="relative w-full h-full object-cover h-64"
               alt={item.properties.Title.title[0]?.plain_text}
             />
             <div className="relative p-4 w-full">

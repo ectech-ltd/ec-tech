@@ -11,7 +11,7 @@ export default function AboutUs() {
       <div className="flex flex-wrap items-center justify-center w-full">
         <div className="hidden md:block w-1/2 xl:w-3/5 h-full">
           <img
-            src="/img/image 3.png"
+            src="/img/ectech.png"
             alt="logo"
             className="h-full w-full object-cover"
           />

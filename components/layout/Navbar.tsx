@@ -1,4 +1,4 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import MobileMenu from './MobileMenu'
@@ -7,13 +7,7 @@ export default function Navbar() {
     <div className="sticky top-0 w-full py-4 px-6 xl:px-0 z-50 backdrop-blur bg-[#D1E5D6] bg-opacity-80">
       <div className="relative max-w-6xl mx-auto flex items-center justify-between w-full">
         <Link href="/" className="cursor-pointer">
-          <Image
-            src="/img/logo-text.svg"
-            alt="logo"
-            width={150}
-            height={56}
-            className="h-10 md:h-14"
-          />
+          <img alt="logo" src="/img/logo-text.png" className="max-h-14" />
         </Link>
 
         <div className="hidden md:flex text-sm items-center justify-center space-x-4">
@@ -35,11 +29,8 @@ export default function Navbar() {
           >
             Sản phẩm
           </Link>
-          <Link
-            href="/#du-an-tieu-bieu"
-            className="font-semibold hover:text-green-dark"
-          >
-            Dự án tiêu biểu
+          <Link href="/du-an" className="font-semibold hover:text-green-dark">
+            Dự án
           </Link>
           <Link
             href="/tin-tuc-va-khuyen-mai"

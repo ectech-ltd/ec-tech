@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -11,12 +12,10 @@ export default function Footer() {
       }}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-0">
-        <Image
-          src="/img/logo-text.svg"
-          width={150}
-          height={56}
+        <img
+          src="/img/logo-text.png"
           alt="logo"
-          className="h-16 md:h-20"
+          className="max-h-16 md:max-h-20"
         />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-gray-900 text-sm mt-2 md:mt-10 space-y-6 md:space-y-0">
           <div className="w-full space-y-3">
